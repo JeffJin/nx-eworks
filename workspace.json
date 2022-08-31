@@ -2,6 +2,10 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "adworks": "apps/adworks",
+    "adworks-e2e": "apps/adworks-e2e",
+    "dashboard": "apps/dashboard",
+    "dashboard-e2e": "apps/dashboard-e2e",
     "models": "libs/models",
     "security": "libs/security",
     "shell": "apps/shell",
