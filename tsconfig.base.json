@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@eworks/models": ["libs/models/src/index.ts"],
+      "@eworks/security": ["libs/security/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
