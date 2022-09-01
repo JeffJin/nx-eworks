@@ -9,6 +9,7 @@
     "models": "libs/models",
     "security": "libs/security",
     "shell": "apps/shell",
-    "shell-e2e": "apps/shell-e2e"
+    "shell-e2e": "apps/shell-e2e",
+    "ui": "libs/ui"
   }
 }

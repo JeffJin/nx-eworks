@@ -1,13 +1,12 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
-
 import { Route, Routes, Link } from 'react-router-dom';
 
 export function App() {
   return (
     <>
-      <NxWelcome title="adworks" />
+      <h1>eworks react app</h1>
+
+      <eworks-logo url="/assets/eWorks_logos_solid_dark.png"/>
       <div />
 
       {/* START: routes */}

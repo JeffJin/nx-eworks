@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@eworks/models": ["libs/models/src/index.ts"],
-      "@eworks/security": ["libs/security/src/index.ts"]
+      "@eworks/security": ["libs/security/src/index.ts"],
+      "@eworks/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
