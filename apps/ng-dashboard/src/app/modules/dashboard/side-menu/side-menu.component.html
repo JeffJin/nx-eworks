@@ -1,0 +1,140 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #leftNav mode="side" opened="true" class="sidenav"
+               [fixedInViewport]="false" [fixedTopGap]="0"
+               [fixedBottomGap]="0">
+    <div class="logo">
+      <a href="https://www.reefbook.ca" class="simple-text logo-normal">
+        Reefbook
+      </a>
+    </div>
+    <div class="user">
+      <div class="photo">
+        <img src="./assets/img/faces/avatar.jpg"/>
+      </div>
+      <div class="user-info">
+        <a href="javascript:void(0)" [ngClass]="{'open': profileMenuOpen}" (click)="toggleProfileMenu()" >
+          <span>
+              Tania Andrew
+              <b class="caret"></b>
+          </span>
+        </a>
+        <a [ngClass]="{'collapsed': !profileMenuOpen, 'open': profileMenuOpen}" >
+          <div class="collapse" [ngClass]="{'show': profileMenuOpen}">
+            <ul class="nav">
+              <li class="nav-item">
+                <a [routerLink]="['assets']" routerLinkActive="active" class="nav-link">
+                  <span class="sidebar-normal">My Profile</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['assets']" routerLinkActive="active" class="nav-link">
+                  <span class="sidebar-normal">Edit Profile</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['assets']" routerLinkActive="active" class="nav-link">
+                  <span class="sidebar-normal">Settings</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </a>
+      </div>
+    </div>
+    <ul class="menu-list">
+      <li class="menu-list-item">
+        <a class="menu-item-content" [routerLink]="['overview']" routerLinkActive="active">
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="menu-list-item">
+        <div class="has-children">
+          <a class="menu-item-content"  [ngClass]="{'open': deviceMenuOpen}" (click)="toggleDeviceMenuOpen()" [routerLink]="['devices']" routerLinkActive="active">
+            <mat-icon>perm_device_information</mat-icon>
+            <span>
+              Devices
+              <b class="caret"></b>
+            </span>
+          </a>
+          <a [ngClass]="{'collapsed': !deviceMenuOpen, 'open': deviceMenuOpen}">
+            <div class="collapse" [ngClass]="{'show': deviceMenuOpen}">
+              <ul class="nav">
+                <li class="nav-item">
+                  <a [routerLink]="['devices/offline']" routerLinkActive="active" class="nav-link">
+                    <span class="sidebar-normal">Offline Devices</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="['devices/online']" routerLinkActive="active" class="nav-link">
+                    <span class="sidebar-normal">Online Devices</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class="menu-list-item">
+        <a class="menu-item-content" [routerLink]="['licenses']" routerLinkActive="active" >
+          <mat-icon>receipt</mat-icon>
+          <span>Licenses</span>
+        </a>
+      </li>
+      <li class="menu-list-item">
+        <a class="menu-item-content" [routerLink]="['groups']" routerLinkActive="active">
+          <mat-icon>group_work</mat-icon>
+          <span>Groups</span>
+        </a>
+      </li>
+      <li class="menu-list-item">
+        <a class="menu-item-content" [routerLink]="['assets']" routerLinkActive="active">
+          <mat-icon>video_library</mat-icon>
+          <span>Assets</span>
+        </a>
+      </li>
+      <li class="menu-list-item">
+        <a class="menu-item-content" [routerLink]="['playlists']" routerLinkActive="active">
+          <mat-icon>playlist_play</mat-icon>
+          <span>Playlists</span>
+        </a>
+      </li>
+      <li class="menu-list-item">
+        <a class="menu-item-content" [routerLink]="['locations']" routerLinkActive="active">
+          <mat-icon>location_on</mat-icon>
+          <span>Locations</span>
+        </a>
+      </li>
+      <mat-divider></mat-divider>
+      <li class="menu-list-item">
+        <a class="menu-item-content" [routerLink]="['reports']" routerLinkActive="active">
+          <mat-icon>insert_chart</mat-icon>
+          <span>Reports</span>
+        </a>
+      </li>
+      <li class="menu-list-item">
+        <a class="menu-item-content" [routerLink]="['customers']" routerLinkActive="active">
+          <mat-icon>supervisor_account</mat-icon>
+          <span>Customers</span>
+        </a>
+      </li>
+      <mat-divider></mat-divider>
+      <li class="menu-list-item">
+        <a class="menu-item-content" [routerLink]="['account']" routerLinkActive="active">
+          <mat-icon>account_box</mat-icon>
+          <span>Account</span>
+        </a>
+      </li>
+      <li class="menu-list-item">
+        <a class="menu-item-content" [routerLink]="['settings']" routerLinkActive="active">
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </a>
+      </li>
+    </ul>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,7 @@
+<div class="item-container">
+  <router-outlet></router-outlet>
+  <div class="alert alert-danger" *ngIf="errorMessage$ | async as errorMessage">
+    {{ errorMessage }}
+  </div>
+</div>
+

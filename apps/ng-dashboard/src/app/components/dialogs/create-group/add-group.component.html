@@ -1,0 +1,21 @@
+<div class="icon-wrapper">
+  <div class="add-group-icon icon-wrapper" aria-label="add group icon"></div>
+</div>
+<div class="title-wrapper">
+  <h1 class="mat-subheading-1">
+    CREATE NEW GROUP
+  </h1>
+</div>
+<form>
+  <div class="modal-container">
+    <mat-form-field>
+      <input name="name" matInput placeholder="Group Name" [(ngModel)]="data.name" required>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <div class="btn-container">
+      <button class="btn-cancel" type="reset" mat-button (click)="cancel()">Cancel</button>
+      <button class="btn-confirm" type="submit" mat-button cdkFocusInitial [disabled]="!data.name" [mat-dialog-close]="data">Save</button>
+    </div>
+  </div>
+</form>

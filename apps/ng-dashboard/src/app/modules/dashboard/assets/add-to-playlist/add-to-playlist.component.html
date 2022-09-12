@@ -1,0 +1,144 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step>
+    <ng-template matStepLabel>Select a playlist</ng-template>
+    <h3>Select A Template</h3>
+    <div class="templates">
+      <div class="template temp1" [ngClass]="{'selected': selectedTemplate.index == 1 }" (click)="selectTemplate(1)">
+        <div class="main">
+          <p>1</p>
+        </div>
+      </div>
+      <div class="template temp2" [ngClass]="{'selected': selectedTemplate.index == 2 }" (click)="selectTemplate(2)">
+        <div class="top">
+          <p>1</p>
+        </div>
+        <div class="bottom">
+          <p>2</p>
+        </div>
+      </div>
+      <div class="template temp3" [ngClass]="{'selected': selectedTemplate.index == 3 }" (click)="selectTemplate(3)">
+        <div class="top">
+          <div class="left">
+            <p>1</p>
+          </div>
+          <div class="main">
+            <p>2</p>
+          </div>
+        </div>
+        <div class="bottom">
+          <p>3</p>
+        </div>
+      </div>
+    </div>
+    <h3>Available Playlists</h3>
+    <mat-radio-group class="playlist-radio-group">
+      <mat-radio-button class="playlist-radio-button" *ngFor="let item of playlists" [value]="item"
+                        (change)="playlistSelected($event.value)">
+        {{item.name}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-divider></mat-divider>
+    <div>
+      <button mat-button matStepperNext [disabled]="!selectedPlaylist">Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Configure Playlist <b><i>{{ selectedPlaylist?.name}}</i></b></ng-template>
+    <div class="configure">
+      <h3>1. Selected Template</h3>
+      <div class="templates">
+        <div class="template temp1" *ngIf="selectedTemplate.index == 1" [ngClass]="{'selected': selectedTemplate.index == 1 }" (click)="selectTemplate(1)">
+          <div class="main">
+            <p>1</p>
+          </div>
+        </div>
+        <div class="template temp2" *ngIf="selectedTemplate.index == 2" [ngClass]="{'selected': selectedTemplate.index == 2 }" (click)="selectTemplate(2)">
+          <div class="top">
+            <p>1</p>
+          </div>
+          <div class="bottom">
+            <p>2</p>
+          </div>
+        </div>
+        <div class="template temp3" *ngIf="selectedTemplate.index == 3" [ngClass]="{'selected': selectedTemplate.index == 3 }" (click)="selectTemplate(3)">
+          <div class="top">
+            <div class="left">
+              <p>1</p>
+            </div>
+            <div class="main">
+              <p>2</p>
+            </div>
+          </div>
+          <div class="bottom">
+            <p>3</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>2. Assets and Playlists</h3>
+      <div class="timeline">
+        <div class="thumbnails" >
+          <div class="thumb" *ngFor="let item of playlistItems; let i = index">
+            <img [src]="item.media.mainThumbnail" alt="image">
+            <div class="overlay">
+              <span>{{item.media.title}}<br>{{convertTimeSeconds(item.duration)}}</span>
+              <div class="index">{{i + 1}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="attrs">
+          <div class="start">
+            <label (click)="openStartTimePicker(playlistItems[0])">Start Time: {{startTimeString}}</label>
+            --
+            <label (click)="openEndTimePicker(playlistItems[0])">End Time: {{endTimeString}}</label>
+          </div>
+          <div class="end">
+            <label>Duration: {{duration}}</label>
+          </div>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div class="ctrl">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="save()">Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Summary</ng-template>
+    <div class="summary">
+
+      <div class="preview" [ngClass]="{'is-playing': isPlaying}">
+        <img src="assets/play_icon.png" alt="preview" (click)="playPreview()">
+        <div class="player-container" *ngIf="isPlaying">
+          <app-playlist-player [playlistItems]="playlistItems" (onFinished)="videoPlayed($event)"></app-playlist-player>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="thumbnails">
+          <div class="thumb droppable" *ngFor="let item of playlistItems;">
+            <img [src]="item.media.mainThumbnail" alt="image">
+            <div class="overlay"><span>{{convertTimeSeconds(item.duration)}}</span></div>
+          </div>
+        </div>
+        <div class="attrs">
+          <div class="start">
+            <label>Start Time: {{startTimeString}}</label>
+          </div>
+          <div class="end">
+            <label>End Time: {{endTimeString}}</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="publish()">Publish</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+<pre>{{selectedPlaylist | json}}</pre>

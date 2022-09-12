@@ -1,0 +1,15 @@
+.items {
+  .item-box {
+    &.audio {
+      border-radius: 4px;
+      border: 1px solid #c5c5c5;
+      line-height: 40px;
+
+      audio {
+        width: 100px;
+        height: 42px;
+        padding-top: 9px;
+      }
+    }
+  }
+}

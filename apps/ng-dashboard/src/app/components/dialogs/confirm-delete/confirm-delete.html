@@ -1,0 +1,17 @@
+<div class="modal-container">
+  <div class="warn-icon-wrapper">
+    <div class="warn-text">!</div>
+  </div>
+  <h2 mat-dialog-title>Are you sure?</h2>
+
+  <div mat-dialog-content>
+    <strong><i>{{data.title || data.name}}</i></strong> will be deleted and you won't be able to revert this.
+  </div>
+  <div mat-dialog-actions>
+    <div class="btn-container">
+      <button class="btn-cancel" mat-button (click)="cancel()">Cancel</button>
+      <button class="btn-confirm" mat-button [mat-dialog-close]="data" cdkFocusInitial (click)="continue()">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+

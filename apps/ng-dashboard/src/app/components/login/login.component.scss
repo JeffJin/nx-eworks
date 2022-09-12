@@ -1,0 +1,58 @@
+@import "../../../assets/scss/core/variables";
+@import "../../../assets/scss/core/mixins";
+@import "../../../assets/scss/core/misc";
+
+.login {
+  .login-comp {
+    background-image: url('../../../assets/img/reef-bg-dark.png');
+    background-size: cover;
+    background-position: top center;
+
+    > .content {
+      padding-top: 18vh;
+    }
+
+    .container {
+      padding-top: 18vh;
+    }
+
+
+    .card-login {
+      @include transform-translate-y(0);
+      @extend .animation-transition-general;
+
+      .card-header {
+        margin-top: -40px;
+        margin-bottom: 20px;
+      }
+      .card-body {
+        padding: 0px 30px 0px 10px;
+
+        .input-group {
+          .input-group-text {
+            padding: 6px 15px 0 15px;
+          }
+          .mat-form-field {
+            flex: 1 1 auto;
+            width: 1%;
+            padding: 0;
+            top: 5px;
+            margin-top: 12px;
+            min-width: 0;
+          }
+        }
+      }
+
+      .social-line .btn {
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      &.card-hidden{
+        opacity: 0;
+        @include transform-translate-y(-60px);
+      }
+    }
+  }
+}
+

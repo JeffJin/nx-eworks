@@ -1,0 +1,15 @@
+<div class="tag-wrapper">
+  <nav class="tags">
+    <app-categories [categories]="categories$ | async" [baseRoute]="'/dashboard/assets/images'"></app-categories>
+  </nav>
+</div>
+<div *ngIf="images$ | async as images">
+  <app-image-list
+    (remove)="remove($event)"
+    (edit)="edit($event)"
+    [images]="images"
+    [selectedFilter]="selectedFilter$ | async">
+  </app-image-list>
+</div>
+
+

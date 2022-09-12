@@ -1,0 +1,65 @@
+.table-container {
+  .db-item-container {
+    width: 50%;
+  }
+
+  .data-tables-length {
+    .custom-select {
+      width: 16px;
+    }
+  }
+
+  .table {
+    tbody {
+
+      tr {
+
+        td {
+          max-width: 96px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+
+  .pagination-info {
+    display: none;
+  }
+
+  .paging_full_numbers_container {
+    bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .table-container {
+
+    .table {
+      tbody {
+        tr {
+
+          td {
+            max-width: none;
+            overflow: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .table-container {
+    .db-item-container {
+
+    }
+    .pagination-info {
+      display: block;
+      position: relative;
+      top: 5px;
+    }
+    .paging_full_numbers_container {
+      bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<div class="icon-wrapper">
+  <div class="edit-icon icon-wrapper" aria-label="edit device icon"></div>
+</div>
+<div class="title-wrapper">
+  <h1 class="mat-subheading-1">
+    EDIT DEVICE
+  </h1>
+</div>
+<form (keyup.enter)="save(data)" class="edit-form-container">
+  <div class="modal-container">
+    <mat-form-field hintLabel="Check serial number on the media player box">
+      <input name="serial" matInput #serialInput maxlength="32" placeholder="Serial Number" [(ngModel)]="data.serialNumber" required>
+      <mat-hint align="end">{{serialInput.value?.length || 0}}/32</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="assetTag" matInput placeholder="Asset Tag" [(ngModel)]="data.assetTag">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="deviceVer" matInput placeholder="Device Version" type="number" [(ngModel)]="data.deviceVersion">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="appVer" matInput placeholder="App Version" type="number" [(ngModel)]="data.appVersion">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select name="group" placeholder="Group" [(ngModel)]="selectedGroup">
+        <mat-option [value]="">Select a group</mat-option>
+        <mat-option [value]="item" *ngFor="let item of groups">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select name="customer" placeholder="Customer" [(ngModel)]="selectedCustomer">
+        <mat-option [value]="">Select a customer</mat-option>
+        <mat-option [value]="item" *ngFor="let item of customers">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select name="location" placeholder="Location" [(ngModel)]="selectedLocation">
+        <mat-option [value]="">Select a location</mat-option>
+        <mat-option [value]="item" *ngFor="let item of locations">
+          {{item.address}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <div class="btn-container">
+      <button class="btn-cancel" mat-button (click)="cancel()">Cancel</button>
+      <button class="btn-confirm" mat-button cdkFocusInitial [disabled]="!valid(data)" (click)="save(data)">Save</button>
+    </div>
+  </div>
+</form>

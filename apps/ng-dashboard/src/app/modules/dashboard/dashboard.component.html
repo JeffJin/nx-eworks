@@ -1,0 +1,17 @@
+<ng-container *ngIf="ready">
+  <div class="auth-layout" [ngClass]="{'side-menu-mobile-open': leftMenuOpen}">
+    <div class="side-menu-container">
+      <app-left-menu #leftMenu>
+      </app-left-menu>
+      <div class="side-menu-background"></div>
+    </div>
+    <div class="content-container">
+      <app-top-nav></app-top-nav>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="notification-center">
+    <app-notification #ntfCenter></app-notification>
+  </div>
+</ng-container>
+

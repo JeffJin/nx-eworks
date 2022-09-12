@@ -1,0 +1,48 @@
+<mat-toolbar class="dashboard-header">
+  <div class="navbar-wrapper">
+    <div class="navbar-minimize">
+      <button mat-raised-button class="btn btn-just-icon btn-white btn-fab btn-round">
+        <i class="material-icons text_align-center visible-on-sidebar-regular">more_vert</i>
+        <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
+      </button>
+    </div>
+    <a class="navbar-brand">Dashboard</a>
+  </div>
+  <div class="notification">
+    <button mat-button class="ntf-icon" (click)="toggleNotification()">
+    </button>
+    <a [routerLink]="'/dashboard/assets/upload'"
+       [routerLinkActive]="'active'"
+       class="nav-link">
+      <i class="material-icons upload">video_camera_front</i>
+      <div class="ripple-container"></div>
+    </a>
+  </div>
+  <div class="search">
+    <mat-form-field appearance="fill">
+      <mat-label>Search</mat-label>
+      <input matInput type="text" [(ngModel)]="searchKey">
+      <button matSuffix mat-icon-button aria-label="Search" (click)="search(searchKey)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="login">
+    <mat-icon>account_circle</mat-icon>
+    <button mat-button [matMenuTriggerFor]="menu">
+      {{(user$ | async).userName}}
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <mat-menu class="login-menu" #menu="matMenu">
+      <button mat-menu-item>Account</button>
+      <button mat-menu-item (click)="logoutUser()">Logout</button>
+    </mat-menu>
+  </div>
+  <button class="menu-button navbar-toggler btn-no-ripple" [ngClass]="{'toggled' : sideBarToggled}" type="button" (click)="toggleSideMenu()">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="navbar-toggler-icon icon-bar"></span>
+    <span class="navbar-toggler-icon icon-bar"></span>
+    <span class="navbar-toggler-icon icon-bar"></span>
+  </button>
+</mat-toolbar>
+<mat-progress-bar *ngIf="isBusy" mode="indeterminate"></mat-progress-bar>

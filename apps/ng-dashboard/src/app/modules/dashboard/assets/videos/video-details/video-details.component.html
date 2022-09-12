@@ -1,0 +1,15 @@
+<div class="item-container">
+  <div class="header">
+
+  </div>
+  <div class="video-container" *ngIf="options.sources[0].src">
+    <app-video-player [options]="options"></app-video-player>
+  </div>
+  <div class="video-title">{{video.title}}</div>
+  <div class="video-date">{{video.createdOn | date: 'longDate'}}</div>
+  <div class="video-desc">{{video.description}}</div>
+  <div class="actions">
+    <button mat-raised-button class="btn btn-primary" (click)="edit(video)">Edit</button>
+    <button mat-raised-button class="btn btn-danger" (click)="remove(video)">Delete</button>
+  </div>
+</div>

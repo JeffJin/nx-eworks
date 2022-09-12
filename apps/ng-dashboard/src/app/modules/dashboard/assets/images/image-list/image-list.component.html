@@ -1,0 +1,45 @@
+<div class="asset-container image-container" *ngIf="selectedFilter != 'Unprocessed'; else unprocessedView">
+  <div *ngFor="let item of images" class="asset-wrapper">
+    <a class="asset-link" [routerLink]="'/dashboard/assets/images/details'" [queryParams]="{iid: item.visibleId}">
+      <div class="thumbnail" [ngStyle]="{'background-image': 'url(' + item.cloudUrl + ')'}"></div>
+      <div class="details">
+        <div class="icon">{{item.title.charAt(0)}}</div>
+        <div class="meta-container">
+          <div class="asset-title">{{item.title}}</div>
+          <div class="asset-desc">{{item.description}}</div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<ng-template #unprocessedView>
+  <div class="item-container">
+    <app-simple-table
+      [altRowColors]="true"
+      [altRowMonoColor]="true"
+      [tableData]="tableData"
+      [tableRowTemplate]="unprocessedImagesTemplate"
+      [icon]="'model_training'">
+    </app-simple-table>
+    <ng-template #unprocessedImagesTemplate let-image="item">
+      <td>{{image.title || 'n/a'}}</td>
+      <td>{{image.description || 'n/a'}}</td>
+      <td>
+        <div class="item-box time">
+          <div class="item">{{image.createdOn | date:'MMM dd, yyyy'}}</div>
+        </div>
+      </td>
+      <td class="text-right">
+        <button class="btn btn-link btn-warning btn-just-icon edit" matTooltip="process" [matTooltipPosition]="'above'"
+                (click)="editItem(image)">
+          <i class="material-icons">swap_vertical_circle</i>
+        </button>
+        <button class="btn btn-link btn-danger btn-just-icon remove" matTooltip="remove" [matTooltipPosition]="'above'"
+                (click)="removeItem(image)">
+          <i class="material-icons">delete</i>
+        </button>
+      </td>
+    </ng-template>
+  </div>
+</ng-template>
+

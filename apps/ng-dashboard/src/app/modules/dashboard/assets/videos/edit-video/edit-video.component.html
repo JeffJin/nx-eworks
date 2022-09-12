@@ -1,0 +1,52 @@
+<div class="main">
+  <p>{{videoDto.title}}</p>
+  <hr>
+  <div class="row">
+    <div class="col-8 video">
+      <video *ngIf="videoDto.cloudUrl" controls [poster]="videoDto.mainThumbnail">
+        <source [src]="sanitizedVodUrl" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="col-4 thumbnails" *ngIf="videoDto && videoDto.mainThumbnail">
+      <div class="thumbnail" *ngFor="let img of thumbnails">
+        <img src="{{img}}">
+      </div>
+    </div>
+  </div>
+  <div class="settings row">
+    <mat-tab-group>
+      <mat-tab label="Basic Info">
+        <div class="row">
+          <div>
+              <input matInput placeholder="Title" [(ngModel)]="videoDto.title">
+          </div>
+          <div>
+              <textarea matInput placeholder="Description"  [(ngModel)]="videoDto.description"
+                        matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+          </div>
+          <div>
+              <input matInput placeholder="Tags" [(ngModel)]="videoDto.tags">
+          </div>
+          <div class="category">
+            <label for="category">Category:</label>
+            <mat-select id="category" placeholder="Category" [(ngModel)]="selectedCategory" >
+              <mat-option [value]="item" *ngFor="let item of categories">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Statistics">
+        <div class="row">
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+</div>
+<div class="ctrl row">
+  <button class="btn-cancel" mat-button (click)="cancel()">Cancel</button>
+  <button class="btn-confirm" mat-button  cdkFocusInitial (click)="save()">Save</button>
+</div>

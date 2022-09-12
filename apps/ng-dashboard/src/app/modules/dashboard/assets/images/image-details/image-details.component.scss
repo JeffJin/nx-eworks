@@ -1,0 +1,34 @@
+.item-container {
+  padding: 20px;
+  .img-container {
+    height: 100%;
+    .img-details {
+      border-radius: 3px;
+      margin-top: 18px;
+      height: calc(100vh - 270px);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position-x: center;
+    }
+    .img-title {
+      padding: 10px 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+    }
+    .img-desc {
+      padding: 0 20px;
+    }
+    .img-date {
+
+    }
+  }
+
+}
+@media screen and (min-width: 767px) {
+  .item-container {
+  }
+}
+@media screen and (min-width: 991px) {
+
+}

@@ -1,0 +1,24 @@
+<app-top-nav></app-top-nav>
+<div>
+  <h2>
+    Video Playlist
+  </h2>
+  <div>
+    <div *ngIf="currentVideo">
+      <app-video-player [video]="currentVideo"></app-video-player>
+    </div>
+    <div>
+      <div *ngFor="let video of videos">
+        <p>{{video.title}}</p>
+        <div class="controls">
+          <button (click)="deleteAsset(video.id)">Delete</button>
+          <button (click)="publishAsset(video.id)">Publish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button (click)="clockMessaging()">Test SignalR using Clock Updating</button>
+  </div>
+</div>
+

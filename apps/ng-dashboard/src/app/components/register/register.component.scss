@@ -1,0 +1,169 @@
+@import "../../../assets/scss/core/variables";
+@import "../../../assets/scss/core/mixins";
+@import "../../../assets/scss/core/misc";
+
+.register{
+  .register-comp {
+    background-image: url('../../../assets/img/reef-bg-dark.jpg');
+    background-size: cover;
+    background-position: top center;
+
+    > .content {
+      padding-top: 12vh;
+    }
+
+    .container {
+      padding-top: 12vh;
+    }
+
+    .card-signup {
+      @include transform-translate-y(0);
+      @extend .animation-transition-general;
+
+      border-radius: $border-radius-base * 2;
+      @include shadow-16dp();
+      margin-bottom: 100px;
+      padding: 40px 0px;
+
+      .error-container {
+        .mat-error {
+          display: none;
+          &:first-child {
+            display: block;
+          }
+        }
+      }
+
+      .info {
+        max-width: 360px;
+        margin: 0 auto;
+        padding: 0px;
+
+        .info-title{
+          color: #3C4858;
+          margin: 30px 0 15px;
+        }
+      }
+
+      .form-check {
+        margin: 24px 0 0 26px;
+
+        .checkbox-material {
+          padding-right: 20px;
+        }
+        a {
+          color: $brand-primary;
+        }
+        .form-check-sign{
+          padding-right: 27px;
+          left: 27px;
+        }
+      }
+
+      .info-horizontal{
+
+        .icon{
+          float: left;
+          margin-top: 24px;
+          margin-right: 10px;
+
+          i{
+            font-size: 2.6em;
+          }
+
+          &.icon-primary{
+            color: $brand-primary;
+          }
+          &.icon-info{
+            color: $brand-info;
+          }
+          &.icon-success{
+            color: $brand-success;
+          }
+          &.icon-warning{
+            color: $brand-warning;
+          }
+          &.icon-danger{
+            color: $brand-danger;
+          }
+          &.icon-rose{
+            color: $brand-rose;
+          }
+        }
+
+        .description{
+          overflow: hidden;
+        }
+      }
+
+      .mat-error {
+        padding-left: 61px;
+      }
+
+      .form-group{
+        margin: 0 0 0 7px;
+        padding-bottom: 0;
+
+        .mat-spinner {
+          position: absolute;
+          right: 0;
+          top: 18px;
+        }
+      }
+
+      &.card-hidden{
+        opacity: 0;
+        @include transform-translate-y(-60px);
+      }
+
+      .card-header{
+        // @include shadow-big();
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: -40px;
+        padding: 20px 0;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      .text-divider{
+        margin-top: 30px;
+        margin-bottom: 0px;
+        text-align: center;
+      }
+      .card-body{
+        padding: 0px 30px 0px 10px;
+
+        .mat-form-field {
+          flex: 1 1 auto;
+          width: 1%;
+          padding: 0;
+          margin: 10px 0 0 0;
+          min-width: 0;
+        }
+      }
+
+      .social-line{
+        margin-top: $bmd-label-top-margin-base;
+        text-align: center;
+        padding: 0;
+
+        .btn{
+          color: $white-color;
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .container{
+      position: relative;
+      z-index: 3;
+
+      .social {
+        .btn-round {
+          margin: 0 8px;
+        }
+      }
+    }
+  }
+}

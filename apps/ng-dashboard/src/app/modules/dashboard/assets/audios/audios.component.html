@@ -1,0 +1,31 @@
+<div class="item-container">
+  <div class="tag-wrapper">
+    <nav class="tags">
+      <ul role="tablist" class="nav nav-pills nav-pills-grey clearfix">
+        <li class="nav-item" *ngFor="let cat of categories" >
+          <a data-toggle="tab" [routerLink]="'/dashboard/assets/audios'"
+             [queryParams]="{category: cat.name}"
+             role="tablist" class="nav-link"  routerLinkActive="active">
+            {{cat.name | titlecase}}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="asset-container audio-container">
+    <div *ngFor="let item of audios" class="asset-wrapper">
+      <a class="asset-link" [routerLink]="'/listen'" [queryParams]="{vid: item.visibleId}">
+        <div class="thumbnail">
+          <div class="details">
+            <div class="icon">{{item.title.charAt(0)}}</div>
+            <div class="meta-container">
+              <div class="asset-title">{{item.title}}</div>
+              <div class="asset-desc">{{item.description}}</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

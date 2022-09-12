@@ -1,0 +1,365 @@
+.playlist-radio-group {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 20px 0 30px 15px;
+}
+
+.playlist-radio-button {
+  margin: 5px;
+}
+
+.mat-horizontal-content-container {
+  padding-bottom: 0;
+
+  .mat-horizontal-stepper-content {
+    overflow-y: scroll;
+    max-height: 700px;
+  }
+}
+
+.templates {
+  display: flex;
+  width: 100%;
+
+  .template {
+    height: 10rem;
+    width: 32%;
+    border: 1px solid #03A9F4;
+    margin-right: 1%;
+    cursor: pointer;
+
+    &.selected {
+      background-color: grey;
+      opacity: 0.5;
+      border: 1px solid #3b6aee;
+    }
+
+    p {
+      width: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    &.temp1 {
+      .main {
+        width: 100%;
+        height: 100%;
+
+        p {
+          top: 34%;
+          left: 45%;
+        }
+      }
+    }
+
+    &.temp2 {
+      .top {
+        height: 72%;
+        border-bottom: 1px solid #03A9ee;
+
+        p {
+          top: 34%;
+          left: 45%;
+        }
+      }
+
+      .bottom {
+        height: 15%;
+
+        p {
+          top: -43%;
+          left: 45%;
+        }
+      }
+    }
+
+    &.temp3 {
+      .top {
+        height: 82%;
+
+        .left {
+          display: inline-block;
+          border-right: 1px solid #03A9ee;
+          width: 13%;
+          height: 100%;
+
+          p {
+            top: 34%;
+            left: 25%;
+          }
+        }
+
+        .main {
+          display: inline-block;
+          width: 85%;
+          height: 100%;
+
+          p {
+            top: 32%;
+            left: 45%;
+          }
+        }
+      }
+
+      .bottom {
+        border-top: 1px solid #03A9ee;
+        height: 15%;
+
+        p {
+          top: -53%;
+          left: 45%;
+        }
+      }
+    }
+  }
+}
+
+.timeline {
+  width: 100%;
+  margin-bottom: 20px;
+
+  .thumbnails {
+    border-bottom: 5px dashed grey;
+    border-top: 5px dashed grey;
+    padding: 5px 0;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    height: 127px;
+
+    .thumb {
+      display: inline-block;
+      height: 120px;
+      width: 120px;
+      background-color: #464a53;
+      border-radius: 2px;
+      margin: 4px 2px;
+
+      .overlay {
+        position: relative;
+        top: -144px;
+        left: 0;
+        height: 120px;
+        width: 120px;
+        background-color: lightgray;
+        font-size: smaller;
+        opacity: 0.4;
+
+        span {
+          display: block;
+          margin: 22px 10px 0 10px;
+          padding-top: 5px;
+          max-width: 120px;
+          overflow: hidden;
+          text-align: center;
+          white-space: nowrap;
+        }
+
+        .index {
+          border-radius: 30px;
+          width: 35px;
+          height: 35px;
+          margin: 22px auto 0 auto;
+          border: #848484 5px solid;
+          text-align: center;
+          vertical-align: middle;
+          font-size: 30px;
+          font-weight: bolder;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        display: inline-block;
+        margin: 50px auto 3px auto;
+      }
+    }
+  }
+
+  .attrs {
+    padding-top: 8px;
+    font-size: smaller;
+    font-weight: lighter;
+
+    .start {
+      display: inline-block;
+
+      input {
+        border: none;
+      }
+    }
+
+    .end {
+      float: right;
+      display: inline-block;
+
+      input {}
+
+      border: none;
+    }
+  }
+}
+
+.summary {
+  .preview {
+    width: 642px;
+    height: 482px;
+    border: 1px solid grey;
+    background-color: lightgray;
+    margin: 0 auto 20px;
+
+    &.is-playing {
+      background-color: #464a53;
+
+      img {
+        display: none;
+      }
+    }
+
+    img {
+      width: 64px;
+      height: 64px;
+      display: block;
+      margin: auto;
+      padding-top: 200px;
+    }
+  }
+}
+
+.configure {
+  .templates {
+    .template {
+      &.selected {
+        margin: 0 0 20px 32%;
+      }
+    }
+  }
+
+  .mat-expansion-panel-body {
+    padding: 0 16px 16px;
+  }
+
+  .mat-expansion-panel {
+    width: 98%;
+    margin-left: 1%;
+  }
+
+  .title-wrapper {
+    width: 100%;
+    position: inherit;
+    top: 0;
+    left: 0;
+    margin-bottom: 20px;
+  }
+
+  .playlist-container {
+    max-height: 260px;
+    overflow-y: scroll;
+
+    .row {
+      width: 99%;
+      max-height: 200px;
+      border: 1px solid lightgrey;
+      border-radius: 5px;
+      margin-bottom: 20px;
+
+      .items {
+        margin-top: 15px;
+      }
+
+      .item-box {
+        display: inline-block;
+        width: 88px;
+        padding-right: 8px;
+
+        &.time-wrapper {
+          width: 110px;
+        }
+
+        .time {
+          height: 55px;
+          padding-bottom: 2px;
+
+          &.start-from {
+            padding-bottom: 5px;
+
+            input {
+              padding-bottom: 3px;
+            }
+          }
+
+          label {
+            display: block;
+            color: #838383;
+            font-size: 11px;
+            font-weight: 400;
+          }
+
+          input {
+            border: none;
+            border-bottom: 1px solid #949494;
+            font-size: 15px;
+            padding-bottom: 2px;
+          }
+
+          input[type=number] {
+            width: 80px;
+          }
+        }
+
+        &.index {
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+          background-color: rgba(63, 81, 181, 0.34);
+          position: relative;
+          margin: 0 10px;
+          top: -40px;
+          padding: 0;
+
+          span {
+            text-align: center;
+            display: block;
+            margin-top: 10px;
+          }
+        }
+
+        &.number {}
+
+        .mat-input-container {
+          display: block;
+        }
+
+        .mat-checkbox {
+          margin-left: -7px;
+
+          label {
+            border: none;
+          }
+        }
+
+        &.thumb {
+          height: 80px;
+          width: 120px;
+          background-color: #464a53;
+          border-radius: 2px;
+          margin-right: 20px;
+
+          img {
+            max-width: 120px;
+            height: 80px;
+            display: block;
+            margin: 0 auto 3px auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ctrl {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #d3d3d3;
+}

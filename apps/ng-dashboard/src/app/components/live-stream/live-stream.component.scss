@@ -1,0 +1,16 @@
+.live-stream{
+  .live-stream-comp {
+    background-image: url('../../../assets/img/reef-bg-dark.jpg');
+    background-size: cover;
+    background-position: top center;
+
+    > .content {
+      padding-top: 18vh;
+    }
+
+    .container {
+      padding-top: 18vh;
+    }
+
+  }
+}

@@ -1,0 +1,142 @@
+.dashboard-header {
+
+  .navbar-brand {
+    padding-left: 12px;
+    padding-top: 10px;
+    position: relative;
+    top: 3px;
+  }
+
+  &.mat-toolbar-single-row {
+    display: block;
+    background-color: rgb(222, 222, 222);
+
+    .navbar-wrapper {
+      display: inline-block;
+      .navbar-minimize {
+        display: none;
+      }
+    }
+    .menu-button {
+      float: right;
+      margin-top: 13px;
+      margin-right: 0;
+    }
+
+    .notification {
+      display: inline-block;
+      .nav-link {
+        display: inline-block;
+
+        .upload {
+          margin-top: 3px;
+        }
+      }
+      .ntf-icon {
+        width: 48px;
+        height: 48px;
+        background: url("~src/assets/notifications_black_24dp.svg") no-repeat center 8px;
+      }
+    }
+
+    .search {
+      display: none;
+    }
+
+    .login {
+      display: none;
+    }
+  }
+}
+
+.navbar-nav {
+  display: inline-block;
+}
+
+.navbar-right {
+  float: right;
+}
+
+.navbar-nav li {
+  display: inline-block;
+}
+
+@media screen and (min-width: 767px) {
+  .dashboard-header {
+    display: block;
+
+    .navbar-brand {
+
+    }
+
+    &.mat-toolbar-single-row {
+
+      .search {
+        display: inline-block;
+
+        .mat-form-field-wrapper {
+
+          .mat-form-field-suffix {
+            top: 0.3em;
+          }
+
+          .mat-form-field-label {
+            top: 2.4em;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@media screen and (min-width: 991px) {
+  .dashboard-header {
+
+    .navbar-brand {
+
+    }
+
+    &.mat-toolbar-single-row {
+      height: 78px;
+      .navbar-wrapper {
+        .navbar-minimize {
+          display: inline-block;
+          padding: 12px 8px 12px 6px;
+        }
+      }
+
+      .login {
+        display: inline-block;
+        position: absolute;
+        top: 1.2em;
+        right: 1em;
+        color: black;
+        font-size: 16px;
+
+        .mat-icon {
+          position: relative;
+          top: 7px;
+        }
+
+        p {
+          display: inline-block;
+          font-size: 14px;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+
+        .mat-button {
+          .mat-icon {
+            top: 0px;
+          }
+        }
+      }
+
+      .menu-button {
+        display: none;
+      }
+
+    }
+  }
+}

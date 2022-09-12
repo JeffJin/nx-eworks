@@ -1,0 +1,30 @@
+<div class="table-container">
+  <div class="card" [ngClass]="{'card-plain': plainTable}">
+    <div class="card-header card-header-icon card-header-rose">
+      <div class="card-icon">
+        <i class="material-icons">{{icon}}</i>
+      </div>
+      <h4 class="card-title">{{tableData?.title}}</h4>
+    </div>
+    <button class="btn btn-rose" (click)="changeTitle('fdsfdsvfds')">Change Title</button>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table" [ngClass]="{'alt-row-colors': altRowColors, 'alt-row-mono-color': altRowMonoColor}">
+          <thead class="text-primary">
+          <tr>
+            <th *ngFor="let cell of tableData.headerRow">{{ cell }}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of tableData.dataRows">
+            <ng-container *ngTemplateOutlet="tableRowTemplate;context:{item: item}"></ng-container>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+

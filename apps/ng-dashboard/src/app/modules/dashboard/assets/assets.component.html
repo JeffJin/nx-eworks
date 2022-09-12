@@ -1,0 +1,40 @@
+<div class="assets">
+  <div class="card">
+    <div class="card-header card-header-tabs card-header-rose">
+      <div class="nav-tabs-navigation">
+        <div class="nav-tabs-wrapper">
+          <ul data-tabs="tabs" class="nav nav-tabs">
+            <li class="nav-item">
+              <a routerLink="videos"
+                 routerLinkActive="active"
+                 class="nav-link">
+                <i class="material-icons">ondemand_video</i>
+                Videos
+                <div class="ripple-container"></div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="audios"
+                 routerLinkActive="active"
+                 class="nav-link">
+                <i class="material-icons">audio_file</i>
+                Audios
+                <div class="ripple-container"></div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="images"
+                 routerLinkActive="active"
+                 class="nav-link">
+                <i class="material-icons">image</i>
+                Images
+                <div class="ripple-container"></div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

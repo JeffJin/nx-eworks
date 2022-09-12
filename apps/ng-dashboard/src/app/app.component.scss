@@ -1,0 +1,262 @@
+body {
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+ol, ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.login-menu {
+  top: 22px;
+  position: relative;
+  width: 182px;
+}
+
+h2.mat-dialog-title {
+  color: #595959;
+  font-size: 1.875em;
+  font-weight: 600;
+}
+
+mat-dialog-container {
+  &.mat-dialog-container {
+    max-height: 921px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 480px;
+  }
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 1.1em;
+
+  .mat-form-field-label-wrapper {
+    left: -4px;
+    .mat-form-field-label {
+      top: 1.2em;
+      left: 0.3em;
+      color: grey;
+      font-size: small;
+    }
+  }
+
+
+}
+
+.mat-form-field-prefix, .mat-form-field-suffix {
+  top: 0.2em;
+  right: -0.5em;
+  .mat-icon {
+    font-size: 110%;
+  }
+}
+
+.mat-form-field-appearance-fill.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.mat-form-field-appearance-fill.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
+  transform: translateY(-1.3em) scale(0.9);
+}
+
+.mat-form-field-appearance-fill {
+  .mat-form-field-wrapper {
+    .mat-form-field-flex {
+      background-color: transparent;
+      padding: 0;
+
+      .mat-form-field-infix {
+        padding: 0 0 .5em 0;
+      }
+      .mat-form-field-label-wrapper {
+        overflow: visible;
+        .mat-form-field-label {
+
+        }
+
+      }
+    }
+  }
+
+  &.mat-form-field-can-float {
+    .mat-input-server:focus + .mat-form-field-label-wrapper {
+      .mat-form-field-label {
+      }
+    }
+  }
+}
+
+.auth-layout {
+  transform: translate3d(0, 0, 0);
+  transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+
+  .side-menu-container {
+    transform: translate3d(260px, 0, 0);
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 260px;
+    box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+    background-size: cover;
+    background-position: center center;
+    background-image: url('~src/assets/img/sidebar-1.jpeg');
+    z-index: 2;
+  }
+
+  .content-container {
+    position: relative;
+  }
+
+
+  &.side-menu-mobile-open {
+    transform: translate3d(-260px, 0, 0);
+    transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  }
+}
+
+.notification-center {
+  display: flex;
+  background-color: rgba(197, 197, 197, 0.9);
+
+  mat-sidenav {
+    top: 76px;
+  }
+}
+
+.table-container {
+  margin: 0;
+}
+
+.modal-container {
+
+}
+
+.icon-wrapper {
+  text-align: center;
+  padding: 16px;
+  .icon-wrapper {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+.title-wrapper {
+  .mat-subheading-1 {
+    text-align: center;
+  }
+}
+
+.mat-dialog-content {
+  padding: 0 29%;
+  text-align: center;
+}
+
+.mat-dialog-title {
+  text-align: center;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+  .btn-container {
+    padding: 1em 0;
+    button {
+      width: 95px;
+      text-align: center;
+    }
+    .btn-cancel {
+      background-color: #f44336;
+      margin-right: 0px;
+    }
+
+    .btn-confirm {
+      background-color: #4caf50;
+    }
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .auth-layout {
+
+  }
+  .table-container {
+    margin: 8px;
+
+    td, th {
+      text-align: center;
+    }
+  }
+
+  .modal-container {
+
+  }
+  .mat-dialog-actions {
+    .btn-container {
+      button {
+        width: 100px;
+      }
+      .btn-cancel {
+        margin-right: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .auth-layout {
+
+  }
+  .table-container {
+    margin: 16px;
+  }
+
+  .modal-container {
+
+  }
+}
+
+@media screen and (min-width: 991px) {
+  .auth-layout {
+    display: block;
+
+    .content-container {
+      left: 260px;
+      min-height: 100vh;
+      overflow: scroll;
+      width: calc(100% - 260px);
+
+      .content-wrapper {
+        overflow-y: scroll;
+        height: calc(100vh - 78px);
+      }
+    }
+
+    .side-menu-container {
+      transform: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 260px;
+      box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+      background-size: cover;
+      background-position: center center;
+      background-image: url('~src/assets/img/sidebar-1.jpeg');
+      z-index: 2;
+    }
+
+    &.side-menu-mobile-open {
+
+    }
+
+  }
+
+  .table-container {
+    margin: 32px;
+    max-width: 800px;
+  }
+}

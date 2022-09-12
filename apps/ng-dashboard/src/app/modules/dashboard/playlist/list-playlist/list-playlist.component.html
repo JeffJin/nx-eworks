@@ -1,0 +1,30 @@
+<div class="item-container">
+  <div class="btn-container">
+    <button mat-raised-button class="btn btn-primary btn-round" (click)="addNew()">
+      <i class="material-icons">add</i> Add new playlist
+    </button>
+  </div>
+  <app-action-table [tableData]="tableData" [tableRowTemplate]="playlistTemplate" [title]="'PLAYLISTS'" [icon]="'playlist_play'">
+  </app-action-table>
+</div>
+
+
+<ng-template #playlistTemplate let-playlist="item">
+  <td>{{playlist.name}}</td>
+  <td>{{playlist.subPlaylists?.length}}</td>
+  <td>{{playlist.deviceGroups?.length}}</td>
+  <td>{{playlist.createdOn | date:'yy-MM-dd'}}</td>
+  <td>{{playlist.endDate | date:'yy-MM-dd'}}</td>
+  <td>{{playlist.startDate | date:'yy-MM-dd'}}</td>
+  <td class="text-right">
+    <button class="btn btn-link btn-warning btn-just-icon edit" title="publish" (click)="publish(playlist)">
+      <i class="material-icons">published_with_changes</i>
+    </button>
+    <button class="btn btn-link btn-danger btn-just-icon remove" title="edit" [routerLink]="['/dashboard', 'playlists', 'edit', playlist.id]">
+      <i class="material-icons">edit</i>
+    </button>
+    <button class="btn btn-link btn-danger btn-just-icon remove" title="remove" (click)="remove(playlist)">
+      <i class="material-icons">close</i>
+    </button>
+  </td>
+</ng-template>

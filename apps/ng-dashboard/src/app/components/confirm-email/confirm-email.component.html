@@ -1,0 +1,43 @@
+<div class="email-confirm off-canvas-sidebar">
+  <app-navbar></app-navbar>
+  <div class="wrapper wrapper-full-page">
+    <div class="page-header email-confirm-comp header-filter" filter-color="black">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 ml-auto mr-auto" *ngIf="inProgress">
+            <mat-spinner diameter="100"></mat-spinner>
+          </div>
+          <div class="col-md-10 ml-auto mr-auto" *ngIf="isSuccess && !inProgress">
+            <div class="card card-signup card-hidden" #card>
+              <div class="success logo"></div>
+              <h1 class="card-title text-center">Success</h1>
+              <div class="card-body">
+                <div class="text-center">
+                  Congratulations, your account has been successfully created.
+                </div>
+                <div class="text-center btn-container">
+                  <a class="btn btn-primary btn-round mt-4" href="/login">Continue</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 ml-auto mr-auto" *ngIf="!isSuccess && !inProgress">
+            <div class="card card-signup card-hidden" #card>
+              <div class="failure logo"></div>
+              <h1 class="card-title text-center">Failure</h1>
+              <div class="card-body">
+                <div class="text-center">
+                  Unfortunately, your email address cannot be verified.
+                </div>
+                <div class="text-center btn-container">
+                  <a class="btn btn-primary btn-round mt-4" href="/register">Register</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,23 @@
+<div class="item-container">
+  <div class="btn-container">
+    <button mat-raised-button class="btn btn-primary btn-round" (click)="addNew()">
+      <i class="material-icons">add</i> Add new customer
+    </button>
+  </div>
+  <app-action-table [tableData]="tableData" [tableRowTemplate]="template" [title]="'Customers'" [icon]="'people'">
+  </app-action-table>
+</div>
+
+<ng-template #template let-customer="item">
+  <td>{{customer.name}}</td>
+  <td>{{customer.createdOn | date:'yy-MM-dd'}}</td>
+  <td class="text-right">
+    <button class="btn btn-link btn-warning btn-just-icon edit" (click)="edit(customer)">
+      <i class="material-icons">dvr</i>
+    </button>
+    <button class="btn btn-link btn-danger btn-just-icon remove" (click)="remove(customer)">
+      <i class="material-icons">close</i>
+    </button>
+  </td>
+</ng-template>
+

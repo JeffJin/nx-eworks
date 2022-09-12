@@ -1,0 +1,134 @@
+@import "../../../assets/scss/core/variables";
+@import "../../../assets/scss/core/mixins";
+@import "../../../assets/scss/core/misc";
+
+.email-confirm {
+  .email-confirm-comp {
+    background-image: url('../../../assets/img/reef-bg-dark.jpg');
+    background-size: cover;
+    background-position: top center;
+
+    > .content {
+      padding-top: 12vh;
+    }
+
+    .container {
+      padding-top: 18vh;
+      .row {
+        min-height: 30vh;
+      }
+    }
+
+    .card-signup {
+      .card-title {
+        margin-top: 10px;
+        font-size: 28px;
+        font-weight: 500;
+      }
+      .card-body {
+        font-size: 16px;
+      }
+
+      .logo {
+        background-size: 60px 60px;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        left: calc(50% - 30px);
+        top: -30px;
+
+        &.success {
+          background: url('../../../assets/success.svg') no-repeat;
+        }
+
+        &.failure {
+          background: url('../../../assets/failure.svg') no-repeat;
+        }
+      }
+
+      @include transform-translate-y(0);
+      @extend .animation-transition-general;
+
+      border-radius: $border-radius-base * 2;
+      @include shadow-16dp();
+      margin-bottom: 100px;
+      padding: 40px 0 0 0;
+
+      .error-container {
+        .mat-error {
+          display: none;
+          &:first-child {
+            display: block;
+          }
+        }
+      }
+
+      .mat-error {
+        padding-left: 61px;
+      }
+
+      &.card-hidden{
+        opacity: 0;
+        @include transform-translate-y(-60px);
+      }
+
+      .card-header{
+        // @include shadow-big();
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: -40px;
+        padding: 20px 0;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      .text-divider{
+        margin-top: 30px;
+        margin-bottom: 0px;
+        text-align: center;
+      }
+      .card-body{
+        padding: 20px;
+
+        .mat-form-field {
+          flex: 1 1 auto;
+          width: 1%;
+          padding: 0;
+          margin: 10px 0 0 0;
+          min-width: 0;
+        }
+      }
+    }
+
+    .container{
+      position: relative;
+      z-index: 3;
+    }
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .email-confirm {
+    .email-confirm-comp {
+      .card-signup {
+        .card-title {
+          margin-top: 20px;
+        }
+        .success-logo {
+          background: url('../../../assets/success.svg') no-repeat transparent;
+          background-size: 80px 80px;
+          width: 80px;
+          height: 80px;
+          position: absolute;
+          left: calc(50% - 40px);
+          top: -40px;
+        }
+
+        .btn-container {
+          padding-bottom: 10px;
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+}
+

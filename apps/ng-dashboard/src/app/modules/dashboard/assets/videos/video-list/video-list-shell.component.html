@@ -1,0 +1,12 @@
+<div class="tag-wrapper">
+  <nav class="tags">
+    <app-categories [categories]="categories$ | async" [baseRoute]="'/dashboard/assets/videos'"></app-categories>
+  </nav>
+</div>
+
+<div *ngIf="videos$ | async as videos">
+  <app-video-list
+    [videos]="videos"
+    [selectedFilter]="selectedFilter$ | async">
+  </app-video-list>
+</div>

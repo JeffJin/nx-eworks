@@ -1,0 +1,169 @@
+.content-container {
+  padding: 1em 2em;
+
+  .content {
+    display: flex;
+
+    .left {
+      flex: 4;
+      border: 1px dashed grey;
+      padding: 1em;
+
+      .timeline {
+        width: 100%;
+        margin-bottom: 20px;
+
+        .thumbnails {
+          border-bottom: 1px dashed grey;
+          padding: 0 0 5px 0;
+          overflow-y: hidden;
+          overflow-x: auto;
+          white-space: nowrap;
+        }
+
+        .attrsObject {
+          padding-top: 8px;
+          font-size: smaller;
+          font-weight: lighter;
+
+          .start {
+            display: inline-block;
+
+            input {
+              border: none;
+            }
+          }
+
+          .end {
+            float: right;
+            display: inline-block;
+
+            input {
+              border: none;
+            }
+          }
+        }
+
+        .thumb {
+          display: inline-block;
+          height: 160px;
+          width: 160px;
+          background-color: #464a53;
+          border-radius: 2px;
+          margin: 4px 2px;
+          float: left;
+
+          .overlay {
+            position: relative;
+            top: -124px;
+            left: 0;
+            height: 160px;
+            width: 160px;
+            background-color: lightgray;
+            font-size: smaller;
+            opacity: 0.4;
+
+            span {
+              display: block;
+              margin: 0 10px 0 10px;
+              padding-top: 5px;
+              max-width: 200px;
+              overflow: hidden;
+              text-align: center;
+              white-space: nowrap;
+            }
+
+            .index {
+              border-radius: 30px;
+              width: 40px;
+              height: 40px;
+              margin: 16px auto 0 auto;
+              border: #848484 7px solid;
+              text-align: center;
+              vertical-align: middle;
+              font-size: 30px;
+              font-weight: bolder;
+            }
+          }
+
+          img {
+            width: 100%;
+            max-height: 80px;
+            display: inline-block;
+            margin: 39px auto 2px auto;
+          }
+        }
+      }
+
+      .group-container {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+
+        .group-title {
+          padding: 10px;
+          display: block;
+        }
+
+        .groups {
+          border-radius: 2px;
+          border: 1px solid #949494;
+          padding: 5px 0;
+          margin-bottom: 10px;
+          max-height: 370px;
+          overflow-y: scroll;
+
+          .mat-checkbox {
+            label {
+              border: none;
+            }
+
+            .title {
+              padding-left: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      flex: 1;
+      border: 1px dashed grey;
+      border-left: none;
+
+      .asset {
+        max-width: 150px;
+        margin: 4px;
+        height: 140px;
+
+        .overlay {
+          position: relative;
+          top: -142px;
+          left: 0;
+          width: 184px;
+          height: 140px;
+          background-color: lightgray;
+          font-size: smaller;
+          opacity: 0.8;
+
+          .left-arrow {
+            position: relative;
+            top: 50px;
+            height: 30px;
+            background: url("../../../../../assets/baseline_arrow_back_white_48dp.png") no-repeat;
+            background-size: 50px 30px;
+          }
+        }
+
+        &.selected {
+          display: block;
+        }
+
+        img {
+          height: 140px;
+          width: 184px;
+        }
+      }
+    }
+  }
+}

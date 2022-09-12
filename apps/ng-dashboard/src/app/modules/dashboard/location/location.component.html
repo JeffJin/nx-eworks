@@ -1,0 +1,24 @@
+<div class="item-container">
+  <div class="btn-container">
+    <button mat-raised-button class="btn btn-primary btn-round" (click)="addNew()">
+      <i class="material-icons">add</i> Add new location
+    </button>
+  </div>
+  <app-action-table [tableData]="tableData" [tableRowTemplate]="locationTemplate" [title]="'Locations'" [icon]="'place'">
+  </app-action-table>
+</div>
+
+<ng-template #locationTemplate let-location="item">
+  <td>{{location.address}}</td>
+  <td>{{getLocaleInfo(location.locale)}}</td>
+  <td>{{getTimezoneInfo(location.timezoneOffset)}}</td>
+  <td>{{location.createdOn | date:'yy-MM-dd'}}</td>
+  <td class="text-right">
+    <button class="btn btn-link btn-warning btn-just-icon edit" (click)="edit(location.id)">
+      <i class="material-icons">dvr</i>
+    </button>
+    <button class="btn btn-link btn-danger btn-just-icon remove" (click)="remove(location)">
+      <i class="material-icons">close</i>
+    </button>
+  </td>
+</ng-template>

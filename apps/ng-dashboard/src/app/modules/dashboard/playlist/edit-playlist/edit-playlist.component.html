@@ -1,0 +1,89 @@
+<div class="content-container" *ngIf="playlist">
+  <div class="title-wrapper">
+    <div class="content">
+      Configure Playlist <b><i>{{ playlist.name}}</i></b>
+    </div>
+  </div>
+  <div class="content">
+    <div class="left">
+      <div class="timeline">
+        <div class="thumbnails" >
+          <div class="thumb" *ngFor="let item of playlist.playlistItems; let i = index">
+            <img [src]="item.media?.mainThumbnail" alt="image">
+            <div class="overlay">
+              <span>{{item.media?.title}}<br>{{convertTimeSeconds(item.duration)}}</span>
+              <div class="index">{{i + 1}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="attrs">
+          <div class="start">
+            <label>Start Time:</label>
+            <input type="time" [value]="firstItemStartTime" step="1"/>
+          </div>
+          <div class="end">
+            <label>Duration:</label>
+            <input disabled step="1"/>
+          </div>
+        </div>
+      </div>
+      <div class="modal-container">
+        <mat-grid-list cols="3" rowHeight="70px">
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput placeholder="Playlist Name" [(ngModel)]="playlist.name" required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput [min]="today" [max]="playlist.endDate || today" [matDatepicker]="startPicker"
+                     placeholder="Choose a start date" [(ngModel)]="playlist.startDate">
+              <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+              <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input matInput [min]="playlist.startDate || today" [matDatepicker]="endPicker"
+                     placeholder="Choose an end date" [(ngModel)]="playlist.endDate">
+              <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+              <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+        <div class="group-container">
+          <label class="group-title">Device Groups</label>
+          <div class="groups" *ngIf="groups && groups.length">
+            <div *ngFor="let group of groups">
+              <mat-checkbox [(ngModel)]="group.checked">
+                <div class="box-container">
+                  <div class="item-box info">
+                    <div class="item title">{{group.name}}</div>
+                  </div>
+                </div>
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="asset" *ngFor="let asset of assets" [class.selected]="asset.selected"  (mouseover)="asset.selected=true"
+           (mouseout)="asset.selected=false">
+        <img [src]="asset.mainThumbnail">
+        <div class="overlay">
+          <div class="left-arrow">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="ctrl row">
+    <button class="btn-cancel" mat-button (click)="cancel()">Cancel</button>
+    <button class="btn-confirm" mat-button [disabled]="!valid(data)" (click)="save(data)" cdkFocusInitial>Save</button>
+  </div>
+
+</div>

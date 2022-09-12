@@ -1,0 +1,111 @@
+.auth-layout {
+  transform: translate3d(0, 0, 0);
+  transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+
+  .side-menu-container {
+    transform: translate3d(260px, 0, 0);
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 260px;
+    box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+    background-size: cover;
+    background-position: center center;
+    background-image: url('~src/assets/img/sidebar-1.jpeg');
+    z-index: 2;
+  }
+
+  .content-container {
+    position: relative;
+  }
+
+
+  &.side-menu-mobile-open {
+    transform: translate3d(-260px, 0, 0);
+    transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  }
+}
+
+.notification-center {
+  display: flex;
+  background-color: rgba(197, 197, 197, 0.9);
+
+  mat-sidenav {
+    top: 78px;
+  }
+}
+
+.dashboard-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  &.mat-toolbar-single-row {
+    height: 40px;
+  }
+}
+
+.btn-container {
+  padding: 16px 0 12px 12px;
+}
+
+.cdk-overlay-container {
+  .mat-snack-bar-container {
+    max-width: calc(100vw);
+
+    span {
+      width: calc(100% - 90px);
+      overflow: hidden;
+    }
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .auth-layout {
+  }
+  .btn-container {
+    padding: 16px 0 12px 16px;
+  }
+  .cdk-overlay-container {
+    .mat-snack-bar-container {
+      max-width: calc(100vw - 20px);
+    }
+  }
+}
+
+@media screen and (min-width: 991px) {
+  .btn-container {
+    padding: 24px 0 12px 30px;
+  }
+  .auth-layout {
+    display: block;
+
+    .side-menu-container {
+      transform: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 260px;
+      box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+      background-size: cover;
+      background-position: center center;
+      background-image: url('~src/assets/img/sidebar-1.jpeg');
+      z-index: 2;
+    }
+
+    &.side-menu-mobile-open {
+
+    }
+
+  }
+
+  .cdk-overlay-container {
+    .mat-snack-bar-container {
+      max-width: calc(100vw - 240px);
+      margin-left: 290px;
+    }
+  }
+}

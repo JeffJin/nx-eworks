@@ -1,0 +1,71 @@
+<div class="login off-canvas-sidebar">
+  <app-navbar></app-navbar>
+  <div class="wrapper wrapper-full-page">
+    <div class="page-header login-comp header-filter" filter-color="black">
+      <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
+            <form class="form" [formGroup]="loginForm" (ngSubmit)="loginToSite()">
+              <div class="card card-login card-hidden" #card>
+                <div class="card-header card-header-rose text-center">
+                  <h4 class="card-title">Log in</h4>
+                  <div class="social-line">
+                    <button type="button" (click)="handleExternalLogin('facebook')"
+                            class="btn btn-just-icon btn-link btn-white">
+                      <i class="fa fa-facebook-square"></i>
+                    </button>
+                    <button type="button" (click)="handleExternalLogin('twitter')"
+                            class="btn btn-just-icon btn-link btn-white">
+                      <i class="fa fa-twitter"></i>
+                    </button>
+                    <button type="button" (click)="handleExternalLogin('google')"
+                            class="btn btn-just-icon btn-link btn-white">
+                      <i class="fa fa-google-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body ">
+                  <p class="card-description text-center">Or Be Classical</p>
+                  <p class="error-message" *ngIf="loginError$ | async as loginError" [ngClass]="{'active': loginError != null}">User name or password is not valid</p>
+                  <div class="bmd-form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="material-icons">email</i>
+                        </span>
+                      </div>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Enter a valid email</mat-label>
+                        <input matInput type="email" placeholder="Email..." formControlName="email" required
+                               autocomplete="off" (keyup)="emailChanged($event)">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="bmd-form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="material-icons">lock_outline</i>
+                        </span>
+                      </div>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Enter password</mat-label>
+                        <input matInput type="password" placeholder="Password..." formControlName="password"
+                               name="password" required autocomplete="off" (keyup)="passwordChanged($event)">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer justify-content-center">
+                  <button type="submit" class="btn btn-rose btn-link btn-lg" [disabled]="loginForm.invalid">Lets Go</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

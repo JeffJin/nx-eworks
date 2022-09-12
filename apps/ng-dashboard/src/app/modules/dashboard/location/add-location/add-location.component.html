@@ -1,0 +1,28 @@
+<div class="title-wrapper">
+  <div class="content">
+    CREATE NEW LOCATION
+  </div>
+</div>
+<div class="modal-container">
+  <mat-form-field>
+    <input matInput placeholder="Address" [(ngModel)]="data.dto.address" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select name="timezone" placeholder="Timezone" required [(ngModel)]="selectedLocale" (change)="localeSelected(selectedLocale)">
+      <mat-option [value]="item" *ngFor="let item of data.locales">
+        {{item.text}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select name="timezone" placeholder="Timezone" required [(ngModel)]="selectedTimezone" (change)="timezoneSelected(selectedTimezone)">
+      <mat-option [value]="item" *ngFor="let item of timezones">
+        {{item.text}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="ctrl row">
+  <button class="btn-cancel" mat-button (click)="cancel()">Cancel</button>
+  <button class="btn-confirm" mat-button [disabled]="!data.dto.address || data.dto.timezoneOffset === null" [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>

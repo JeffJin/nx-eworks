@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Customize your video</h2>
+<div mat-dialog-content>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="data" placeholder="Enter your text here" matTextareaAutosize matAutosizeMinRows="3"
+              matAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>

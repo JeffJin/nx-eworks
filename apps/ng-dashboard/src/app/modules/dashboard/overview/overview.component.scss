@@ -1,0 +1,20 @@
+.content-wrapper {
+
+  .extra-info {
+    display: none;
+  }
+}
+
+.overview-header-image {
+  background-image: url("https://www.visions.ca/Images/Catalogue/Product/English/KT618KB1_l_1.jpg");
+  background-size: cover;
+}
+
+@media screen and (min-width: 400px) {
+  .content-wrapper {
+
+    .extra-info {
+      display: inline;
+    }
+  }
+}

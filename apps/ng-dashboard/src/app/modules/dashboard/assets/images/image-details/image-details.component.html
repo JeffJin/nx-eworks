@@ -1,0 +1,11 @@
+<div class="item-container" *ngIf="selectedImage$ | async as image">
+  <div class="img-container">
+    <div class="img-details" [ngStyle]="{'background-image': 'url(' + image.cloudUrl + ')'}"></div>
+    <div class="details">
+      <div class="meta-container">
+        <div class="img-title">{{image.title}}</div>
+        <div class="img-desc">{{image.description}}</div>
+      </div>
+    </div>
+  </div>
+</div>

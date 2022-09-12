@@ -1,0 +1,125 @@
+<mat-horizontal-stepper [linear]="false" #uploadStepper>
+  <mat-step [stepControl]="fileUploadForm">
+    <form class="step1" [formGroup]="fileUploadForm" enctype="multipart/form-data">
+      <ng-template matStepLabel>Select a file to upload</ng-template>
+      <div class=" main">
+        <div class="instr" [ngClass]="{'file-drag-over': isFileDragOver}" (click)="triggerFileDialog()"
+             (drop)="onDropFile($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
+          <mat-icon>cloud_upload</mat-icon>
+          <b>Select files to upload</b>
+          <p>Or drag and drop asset files</p>
+          <p class="selected-file" *ngIf="this.selectedFile && this.selectedFile.name">{{this.selectedFile.name}}</p>
+          <input type="file" (change)="onFileSelected()" formControlName="fileCtrl" hidden id="videoFile" name="videoFile" #videoFile>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="settingsForm">
+    <form class="step2" [formGroup]="settingsForm" (ngSubmit)="submitSettingsForm(settingsForm)" >
+      <ng-template matStepLabel>Fill out information about your asset</ng-template>
+      <div class="main">
+        <div class="row">
+          <div class="col-4 video" *ngIf="fileType == 'Video'">
+            <div>
+              <video *ngIf="vodUrl" width="120" height="120" controls>
+                <source [src]="sanitizedVodUrl" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="status" *ngIf="!vodUrl">
+                <div [ngClass]="{'invisible': progress >= 100}">
+                  <mat-spinner></mat-spinner>
+                </div>
+                <div class="progress-num">{{progress}}%</div>
+              </div>
+            </div>
+            <div class="info">
+              <p *ngIf="task">{{task}}</p>
+              <p *ngIf="vodUrl">Your video is available at {{vodUrl}}</p>
+            </div>
+          </div>
+          <div class="col-4 audio" *ngIf="fileType == 'Audio'">
+            <div>
+              <audio *ngIf="audioUrl" controls>
+                <source [src]="sanitizedAudioUrl" type="audio/mpeg">
+                Your browser does not support the audio tag.
+              </audio>
+              <div class="status" *ngIf="!audioUrl">
+                <div [ngClass]="{'invisible': progress >= 100}">
+                  <mat-spinner></mat-spinner>
+                </div>
+                <div class="progress-num">{{progress}}%</div>
+              </div>
+            </div>
+            <div class="info">
+              <p *ngIf="task">{{task}}</p>
+              <p *ngIf="audioUrl">Your audio is available at {{audioUrl}}</p>
+            </div>
+          </div>
+          <div class="col-4 image" *ngIf="fileType == 'Image'">
+            <div>
+              <img *ngIf="imageUrl" [src]="imageUrl"/>
+              <div class="status" *ngIf="!imageUrl">
+                <div [ngClass]="{'invisible': progress >= 100}">
+                  <mat-spinner></mat-spinner>
+                </div>
+                <div class="progress-num">{{progress}}%</div>
+              </div>
+            </div>
+            <div class="info">
+              <p *ngIf="task">{{task}}</p>
+              <p *ngIf="imageUrl">Your image is available at <a href="{{imageUrl}}">here.</a></p>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="progress-label" [ngClass]="{'active': !!task}">{{task}}</div>
+            <mat-progress-bar mode="determinate" value="{{progress}}"></mat-progress-bar>
+            <div class="col-8">
+              <mat-form-field>
+                <input matInput placeholder="Title" formControlName="titleCtrl">
+              </mat-form-field>
+              <mat-form-field>
+                <textarea matInput placeholder="Description" formControlName="descCtrl"
+                      matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Tags" formControlName="tagsCtrl">
+              </mat-form-field>
+            </div>
+            <div class="col-4">
+              <mat-form-field>
+                <mat-select placeholder="Category" [(value)]="selectedCategory" formControlName="categoryCtrl">
+                  <mat-option [value]="item" *ngFor="let item of categories">
+                    {{item.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="thumbnails" *ngIf="videoDto && videoDto.mainThumbnail">
+          <label>Video Thumbnails</label>
+          <div class="thumbnail">
+            <img src="{{img}}" *ngFor="let img of thumbnails">
+          </div>
+        </div>
+      </div>
+      <div class="ctrl row">
+        <button *ngIf="fileType == 'Video'" mat-button type="submit" [disabled]="(!videoDto || !videoDto.id)">
+          Save Video
+        </button>
+        <button *ngIf="fileType == 'Audio'" mat-button type="submit" [disabled]="(!audioDto || !audioDto.id)">
+          Save Audio
+        </button>
+        <button *ngIf="fileType == 'Image'" mat-button type="submit" [disabled]="(!imageDto || !imageDto.id)">
+          Save Image
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Asset Summary</ng-template>
+    <div class=" main">
+
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

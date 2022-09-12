@@ -1,0 +1,26 @@
+.content-container {
+  padding: 1em 2em;
+
+  .group-title {
+    padding-bottom: 10px;
+  }
+
+  .groups {
+    border-radius: 2px;
+    border: 1px solid #949494;
+    padding: 5px 0;
+    margin-bottom: 10px;
+    max-height: 370px;
+    overflow-y: scroll;
+
+    .mat-checkbox {
+      label {
+        border: none;
+      }
+
+      .title {
+        padding-left: 10px;
+      }
+    }
+  }
+}

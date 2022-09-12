@@ -1,0 +1,30 @@
+<div class="item-container">
+  <div class="btn-container">
+    <button mat-raised-button class="btn btn-primary btn-round" (click)="addNew()">
+      <i class="material-icons">add</i> Add new group
+    </button>
+  </div>
+  <app-action-table [tableData]="tableData" [tableRowTemplate]="groupTemplate" [icon]="'group'" [title]="'All Groups'">
+  </app-action-table>
+</div>
+<ng-template #groupTemplate let-group="item">
+  <td>
+    {{group.name}}
+  </td>
+  <td>{{group.numOfDevices}}</td>
+  <td>{{group.numOfPlaylists}}</td>
+  <td>
+    <div class="item-box time">
+      <div class="item">Created On:</div>
+      <div class="item">{{group.createdOn | date:'yy-MM-dd'}}</div>
+    </div>
+  </td>
+  <td class="text-right">
+    <button class="btn btn-link btn-warning btn-just-icon edit" (click)="edit(group.id)">
+      <i class="material-icons">dvr</i>
+    </button>
+    <button class="btn btn-link btn-danger btn-just-icon remove" (click)="remove(group)">
+      <i class="material-icons">close</i>
+    </button>
+  </td>
+</ng-template>

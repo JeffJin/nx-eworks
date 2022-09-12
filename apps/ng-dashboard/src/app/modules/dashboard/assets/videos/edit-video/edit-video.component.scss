@@ -1,0 +1,96 @@
+.main {
+  min-height: 600px;
+
+  .row {
+    width: 100%;
+  }
+
+  .col-8 {
+    width: 66%;
+    display: inline-block;
+  }
+
+  .col-4 {
+    width: 33%;
+    display: inline-block;
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  video {
+    height: 300px;
+    width: 100%;
+    background-color: black;
+  }
+
+  .thumbnails {
+    max-height: 300px;
+    overflow-y: scroll;
+
+    label {
+      display: block;
+      padding-bottom: 4px;
+      padding-left: 10px;
+    }
+
+    .thumbnail {
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+
+      img {
+        padding: 1px;
+        height: 100px;
+        width: auto;
+      }
+    }
+  }
+
+  .settings {
+    .row {
+      margin-top: 10px;
+    }
+
+    .mat-input-element {
+      width: 66%;
+      margin: 5px;
+      border: 1px solid #dfdfdf;
+      border-radius: 1px;
+    }
+
+    .category {
+      font-size: smaller;
+      font-weight: normal;
+      padding-top: 10px;
+
+      label {
+        padding-left: 10px;
+      }
+
+      #category {
+        width: 64.5%;
+        display: block;
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid #dfdfdf;
+        border-radius: 1px;
+      }
+    }
+  }
+
+  .status {
+    width: 110px;
+    margin: 0 auto;
+  }
+
+  .info {
+    text-align: center;
+
+    p {
+      padding: 4px;
+      word-break: break-all;
+    }
+  }
+}

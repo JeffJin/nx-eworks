@@ -3,10 +3,10 @@
   "version": 2,
   "projects": {
     "adworks": "apps/adworks",
-    "adworks-e2e": "apps/adworks-e2e",
-    "dashboard": "apps/dashboard",
-    "dashboard-e2e": "apps/dashboard-e2e",
+    "adworks-api": "apps/adworks-api",
+    "adworks-api.Test": "apps/adworks-api.Test",
     "models": "libs/models",
+    "ng-dashboard": "apps/ng-dashboard",
     "security": "libs/security",
     "shell": "apps/shell",
     "shell-e2e": "apps/shell-e2e",

@@ -1,0 +1,4 @@
+<div [ngClass]="{'playing': isPlaying}">
+  <div id="player" #playerElm ></div>
+  <button (click)="playNext()" *ngIf="currentIndex < 0">Start</button>
+</div>

@@ -1,0 +1,14 @@
+<div class="title-wrapper">
+  <div class="content">
+    EDIT CUSTOMER
+  </div>
+</div>
+<div class="modal-container">
+  <mat-form-field>
+    <input matInput placeholder="Customer Name" [(ngModel)]="data.name" required (keyup.enter)="save(data)">
+  </mat-form-field>
+</div>
+<div class="ctrl row">
+  <button class="btn-cancel" mat-button (click)="cancel()">Cancel</button>
+  <button class="btn-confirm" mat-button [disabled]="!data.name" (click)="save(data)" cdkFocusInitial>Save</button>
+</div>

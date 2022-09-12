@@ -1,0 +1,15 @@
+.item-container {
+  .items {
+    .box-container {
+      .item-box {
+        &.controls {
+          padding-top: 0;
+
+          button {
+            line-height: 20px;
+          }
+        }
+      }
+    }
+  }
+}

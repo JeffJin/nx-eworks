@@ -1,0 +1,9 @@
+<ul role="tablist" class="nav nav-pills nav-pills-grey clearfix" *ngIf="categories">
+  <li class="nav-item" *ngFor="let cat of categories">
+    <a data-toggle="tab" [routerLink]="baseRoute"
+       [queryParams]="{category: cat.name}"
+       role="tablist" class="nav-link" routerLinkActive="active">
+      {{cat.name | titlecase}}
+    </a>
+  </li>
+</ul>

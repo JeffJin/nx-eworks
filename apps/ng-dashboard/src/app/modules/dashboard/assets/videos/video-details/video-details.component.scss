@@ -1,0 +1,31 @@
+.item-container {
+  padding: 20px;
+  .video-container {
+    border-radius: 3px;
+    margin-top: 18px;
+  }
+
+  .video-title {
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  .video-desc {
+
+  }
+  .video-date {
+
+  }
+  .actions {
+    button {
+      width: 100px;
+    }
+  }
+}
+@media screen and (min-width: 767px) {
+  .item-container {
+  }
+}
+@media screen and (min-width: 991px) {
+
+}

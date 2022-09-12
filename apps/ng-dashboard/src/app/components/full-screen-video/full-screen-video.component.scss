@@ -1,0 +1,22 @@
+#player {
+  display: none;
+}
+
+button {
+  display: block;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 96%;
+  height: 96%;
+}
+
+.playing {
+  button {
+    display: none;
+  }
+
+  #player {
+    display: block;
+  }
+}

@@ -1,0 +1,26 @@
+<div class="content-wrapper">
+  <ng-container  *ngFor="let group of formattedGroups">
+    <app-simple-table
+      [tableData]="group"
+      [icon]="'dvr'"
+      [altRowColors]="true"
+      [altRowMonoColor]="true"
+      [tableRowTemplate]="deviceTemplate">
+    </app-simple-table>
+  </ng-container>
+</div>
+<ng-template #deviceTemplate let-device="item">
+  <td>
+    <mat-icon mat-list-icon *ngIf="device.isOnline">wifi</mat-icon>
+    <mat-icon mat-list-icon *ngIf="!device.isOnline">wifi_off</mat-icon>
+  </td>
+  <td>{{device.serialNumber || 'n/a'}}</td>
+  <td>{{device.customerAssetTag || 'n/a'}}</td>
+  <td>
+    <div class="text-primary">
+      {{device.license?.type}}
+      <span class="extra-info"> expire on {{device.license?.expireOn | date:'yy/MM/dd'}}</span>
+    </div>
+  </td>
+</ng-template>
+
