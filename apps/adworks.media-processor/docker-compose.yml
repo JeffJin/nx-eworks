@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  processor:
+    image: eworkspace/media-processor:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=prod
+  proxy:
+    build:
+      context: ./
+      dockerfile: Dockerfile

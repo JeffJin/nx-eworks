@@ -2,14 +2,24 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "adworks": "apps/adworks",
-    "adworks-api": "apps/adworks-api",
-    "adworks-api.Test": "apps/adworks-api.Test",
     "models": "libs/models",
     "ng-dashboard": "apps/ng-dashboard",
     "security": "libs/security",
     "shell": "apps/shell",
     "shell-e2e": "apps/shell-e2e",
-    "ui": "libs/ui"
+    "ui": "libs/ui",
+    "adworks.message-common": "libs/adworks.message-common",
+    "adworks.message-bus": "libs/adworks.message-bus",
+    "adworks.networking": "libs/adworks.networking",
+    "video.converter": "libs/video.converter",
+    "video.metadata": "libs/video.metadata",
+    "adworks.media-common": "libs/adworks.media-common",
+    "adworks.ffmpeg-media-services": "libs/adworks.ffmpeg-media-services",
+    "adworks.scheduler": "libs/adworks.scheduler",
+    "adworks.data-services": "libs/adworks.data-services",
+    "adworks.database-setup": "apps/adworks.database-setup",
+    "adworks.pi-player": "apps/adworks.pi-player",
+    "adworks.web-api": "apps/adworks.web-api",
+    "adworks.media-processor": "apps/adworks.media-processor"
   }
 }

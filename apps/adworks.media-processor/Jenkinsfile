@@ -1,0 +1,64 @@
+pipeline {
+  agent any
+ 
+  environment {
+    dotnet = '/usr/share/dotnet/dotnet'
+    registry = 'eworkspace/media-processor'
+    registryCredential = 'dockerhub'
+  }
+ 
+  stages {
+    stage('Checkout') {
+      steps {
+        git credentialsId: 'github-ssh-jeffjin', url: 'git@github.com:eworkspace/adworks-api.git', branch: 'processor'
+      }
+    }
+    stage('Stop current running image and remove') {
+      steps{
+         sh """
+           docker ps -a \
+           | grep $registry \
+           | awk '{ print \$1 }' \
+           | xargs -I {} docker stop {} \
+           """           
+        sh """
+           docker ps -a \
+           | grep $registry \
+           | awk '{ print \$1 }' \
+           | xargs -I {} docker rm -f {} \
+           """                   
+        sh """
+           docker images \
+           | grep $registry \
+           | awk '{ print \$3 }' \
+           | xargs -I {} docker rmi -f {} \
+           """  
+      }
+    }   
+    stage('Build Processor Image') {
+      steps {
+        sh "docker build . -f adworks.media-processor/Dockerfile -t $registry:$BUILD_NUMBER"
+        sh "docker tag $registry:$BUILD_NUMBER $registry:latest"
+      }
+    }
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( "", "dockerhub" ) {
+            sh "docker push $registry:$BUILD_NUMBER"
+            sh "docker push $registry:latest"
+          }
+        }
+      }
+    }     
+    stage('Run media processor docker image') {
+      steps{
+        script {
+          docker.withRegistry( "", "dockerhub" ) {
+            sh "docker run -d -v media-share:/home --name media-processor $registry:$BUILD_NUMBER"
+          }
+        }
+      }
+    }   
+  }
+}
