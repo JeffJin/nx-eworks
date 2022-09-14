@@ -14,11 +14,9 @@ using adworks.scheduler;
 using Microsoft.Extensions.Configuration;
 using RabbitMQ.Client;
 using Serilog;
-using ILogger = Serilog.ILogger;
-using ILogger = Serilog.ILogger;
-
 using Serilog.Events;
 using Serilog.Exceptions;
+using ILogger = Serilog.ILogger;
 
 namespace adworks.media_processor
 {
