@@ -105,9 +105,9 @@
       <ProjectReference Include="..\..\libs\adworks.scheduler\Eworks.AdworksScheduler.csproj" />
     </ItemGroup>
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="api-build\adworks.media-web-api.deps.json" />
-      <_ContentIncludedByDefault Remove="api-build\adworks.media-web-api.runtimeconfig.dev.json" />
-      <_ContentIncludedByDefault Remove="api-build\adworks.media-web-api.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="api-build\adworks.web-api.deps.json" />
+      <_ContentIncludedByDefault Remove="api-build\adworks.web-api.runtimeconfig.dev.json" />
+      <_ContentIncludedByDefault Remove="api-build\adworks.web-api.runtimeconfig.json" />
       <_ContentIncludedByDefault Remove="api-build\appsettings.dev.json" />
       <_ContentIncludedByDefault Remove="api-build\appsettings.json" />
       <_ContentIncludedByDefault Remove="api-build\appsettings.prod.json" />
