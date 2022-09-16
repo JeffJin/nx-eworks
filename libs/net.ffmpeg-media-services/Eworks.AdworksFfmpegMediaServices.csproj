@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+    <TargetFramework>net6.0</TargetFramework>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <Nullable>enable</Nullable>
+
+    <OutputPath>../../dist/libs/net.ffmpeg-media-services</OutputPath>
+  </PropertyGroup>
+
+  <Target Name="CheckNxModuleBoundaries" BeforeTargets="Build">
+
+    <Exec Command="node ../../node_modules/@nx-dotnet/core/src/tasks/check-module-boundaries.js -p net.ffmpeg-media-services"/>
+
+  </Target>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+      <PackageReference Include="Serilog" Version="2.11.0" />
+    </ItemGroup>
+  <ItemGroup>
+    <None Update="fonts\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\net.media-common\Eworks.AdworksMediaCommon.csproj" />
+      <ProjectReference Include="..\net.message-bus\Eworks.AdworksMessageBus.csproj" />
+      <ProjectReference Include="..\net.message-common\Eworks.AdworksMessageCommon.csproj" />
+      <ProjectReference Include="..\net.video-converter\Eworks.VideoConverter.csproj" />
+      <ProjectReference Include="..\net.video-metadata\Eworks.VideoMetadata.csproj" />
+    </ItemGroup>
+
+</Project>

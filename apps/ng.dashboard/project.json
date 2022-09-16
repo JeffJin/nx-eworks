@@ -1,0 +1,124 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/ng.dashboard/src",
+  "prefix": "eworks",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/ng.dashboard",
+        "index": "apps/ng.dashboard/src/index.html",
+        "main": "apps/ng.dashboard/src/main.ts",
+        "polyfills": "apps/ng.dashboard/src/polyfills.ts",
+        "tsConfig": "apps/ng.dashboard/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/ng.dashboard/src/favicon.ico",
+          "apps/ng.dashboard/src/assets",
+          "apps/ng.dashboard/src/manifest.webmanifest"
+        ],
+        "styles": [
+          "apps/ng.dashboard/src/styles.scss"
+        ],
+        "scripts": [
+        ],
+        "allowedCommonJsDependencies": [
+          "@videojs/xhr",
+          "videojs-vtt.js",
+          "video.js",
+          "videojs-font",
+          "global/document",
+          "global/window",
+          "rxjs-compat",
+          "rxjs",
+          "moment",
+          "humps",
+          "keycode",
+          "mux.js",
+          "safe-json-parse"
+        ],
+        "serviceWorker": false,
+        "ngswConfigPath": "/src/ngsw-config.json"
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "3mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "40kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/ng.dashboard/src/environments/environment.ts",
+              "with": "apps/ng.dashboard/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "ng.dashboard:build:production"
+        },
+        "development": {
+          "browserTarget": "ng.dashboard:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4200,
+        "browserTarget": "ng.dashboard:build",
+        "host": "localhost",
+        "ssl": true
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "ng.dashboard:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/ng.dashboard/**/*.ts",
+          "apps/ng.dashboard/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/ng.dashboard"
+      ],
+      "options": {
+        "jestConfig": "apps/ng.dashboard/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { authRoutes, SecurityModule } from '@eworks/security';
+import { authRoutes, SecurityModule } from '@eworks/ng.security';
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/rx.ad-player/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/rx.ad-player",
+        "index": "apps/rx.ad-player/src/index.html",
+        "baseHref": "/",
+        "main": "apps/rx.ad-player/src/main.tsx",
+        "polyfills": "apps/rx.ad-player/src/polyfills.ts",
+        "tsConfig": "apps/rx.ad-player/tsconfig.app.json",
+        "assets": [
+          "apps/rx.ad-player/src/favicon.ico",
+          "apps/rx.ad-player/src/assets"
+        ],
+        "styles": ["apps/rx.ad-player/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/rx.ad-player/src/environments/environment.ts",
+              "with": "apps/rx.ad-player/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "rx.ad-player:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "rx.ad-player:build:development"
+        },
+        "production": {
+          "buildTarget": "rx.ad-player:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/rx.ad-player/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/rx.ad-player"],
+      "options": {
+        "jestConfig": "apps/rx.ad-player/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -45,10 +45,7 @@
               "with": "apps/shell/src/environments/environment.prod.ts"
             }
           ],
-          "outputHashing": "all",
-          "customWebpackConfig": {
-            "path": "apps/shell/webpack.prod.config.js"
-          }
+          "outputHashing": "all"
         },
         "development": {
           "buildOptimizer": false,

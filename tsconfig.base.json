@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@eworks/models": ["libs/models/src/index.ts"],
-      "@eworks/security": ["libs/security/src/index.ts"],
+      "@eworks/ng.models": ["libs/ng.models/src/index.ts"],
+      "@eworks/ng.security": ["libs/ng.security/src/index.ts"],
       "@eworks/ui": ["libs/ui/src/index.ts"]
     }
   },
