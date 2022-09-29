@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: adworks-media-api-ingress
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.global-static-ip-name: "web"
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/send-timeout: "3600"
+    # certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    # cors is handled by the .Net app itself. We don't need to put the config here.
+    # nginx.ingress.kubernetes.io/enable-cors: "true"
+    # nginx.ingress.kubernetes.io/cors-allow-origin: "http://localhost:4200"
+    # nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    # nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, DELETE, OPTIONS"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    # nginx.ingress.kubernetes.io/lua-resty-waf: "simulate"
+    # nginx.ingress.kubernetes.io/connection-proxy-header: "keep-alive"
+spec:
+  rules:
+  - host: local.io
+    http:
+      paths:
+      - path: /api/
+        backend:
+          serviceName: adworks-media-api
+          servicePort: 80
+      - path: /eventing
+        backend:
+          serviceName: adworks-media-api
+          servicePort: 80
+      - path: /
+        backend:
+          serviceName: adworks-dashboard
+          servicePort: 80  
+  - host: mq-mgmt.local.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: adworks-mq-rabbitmq-ha
+          servicePort: 15672

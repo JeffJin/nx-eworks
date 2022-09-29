@@ -45,3 +45,6 @@ apps/*/obj
 libs/*/bin
 libs/*/obj
 /apps/net.web-api/out/
+
+# Next.js
+.next

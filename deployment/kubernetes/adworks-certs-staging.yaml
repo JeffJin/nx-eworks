@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: api-ks-link2-co
+  namespace: default
+spec:
+  secretName: api-ks-link2-co-tls
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  commonName: api.ks.link2.co
+  dnsNames:
+  - mq-mgmt.ks.link2.co
+  acme:
+    config:
+    - http01:
+        ingress: adworks-media-api-ingress
+      domains:
+      - api.ks.link2.co
+      - mq-mgmt.ks.link2.co

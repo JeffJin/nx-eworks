@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-processor
+  labels:
+    app: media-processor
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: media-processor
+  template:
+    metadata:
+      labels:
+        app: media-processor
+    spec:
+      containers:
+      - name: media-processor
+        image: eworkspace/media-processor:latest
+        imagePullPolicy: Always
+        env:
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: "Instance__Id"
+          value: "$(MY_POD_NAME)"
+        - name: ENABLE_SAMBA
+          value: "0"
+        - name: "LogFile"
+          value: "files/logs-$(MY_POD_NAME)/processor.log"
+        - name: "ConnectionStrings__DefaultConnection"
+          value: "Server=adworks-mysql;Port=3306;Database=adworks;UserId=adworks_user;Password=E0aQ63o7lU;"
+        - name: "MessageQueueSettings__HostName"
+          value: "adworks-mq-rabbitmq-ha"
+        - name: "MessageQueueSettings__UserName"
+          value: "adworks-media-processor"
+        - name: "MessageQueueSettings__Password"
+          value: "cheuJae3aive6aiCil3metae"
+        - name: "MessageQueueSettings__Port"
+          value: "5671"
+        - name: "MessageQueueSettings__Ssl"
+          value: "true"
+        - name: "MessageQueueSettings__VirtualHost"
+          value: "/prod"
+        - name: "BaseAssetFolder"
+          value: "/mnt"
+        - name: "FFMpeg__ToolPath"
+          value: "FFMpeg/linux"
+        resources:
+          requests:
+            cpu: 0m
+            memory: 256Mi
+          limits:
+            cpu: 600m
+            memory: 512Mi
+        volumeMounts:
+        - name: data
+          mountPath: /mnt
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: adworks-dev-shared

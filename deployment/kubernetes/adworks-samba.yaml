@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: adworks-samba
+  labels:
+    app: adworks-samba
+    class: assets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adworks-samba
+      class: assets
+  serviceName: "adworks-samba"
+  template:
+    metadata:
+      labels:
+        app: adworks-samba
+        class: assets
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: adworks-samba
+        image: dperson/samba:latest
+        volumeMounts:
+          - mountPath: /mnt
+            name: samba-data-pvc
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        args: ['-r', '-p', '-s', 'public;/mnt;no;no;no;public', '-u', 'public;public', '-g', 'strict locking = no']
+  volumeClaimTemplates:
+  - metadata:
+      name: samba-data-pvc
+      labels:
+        app: adworks-samba  
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 50Gi  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adworks-samba
+spec:
+  selector:
+    app: adworks-samba
+  ports:
+  - name: netbios-ssn
+    protocol: TCP
+    port: 139
+  - name: microsoft-ds
+    protocol: TCP
+    port: 445
+  type: ClusterIP

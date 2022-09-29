@@ -15,12 +15,15 @@
     "net.video-converter": "libs/net.video-converter",
     "net.video-metadata": "libs/net.video-metadata",
     "net.web-api": "apps/net.web-api",
+    "next.my-rentals": "apps/next.my-rentals",
+    "next.my-rentals-e2e": "apps/next.my-rentals-e2e",
     "ng.dashboard": "apps/ng.dashboard",
     "ng.models": "libs/ng.models",
     "ng.security": "libs/ng.security",
     "rx.ad-player": "apps/rx.ad-player",
     "rx.ad-player-e2e": "apps/rx.ad-player-e2e",
-    "shell": "apps/shell",
+    "rx.shop": "apps/rx.shop",
+    "rx.shop-e2e": "apps/rx.shop-e2e",
     "ui": "libs/ui"
   }
 }

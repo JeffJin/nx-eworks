@@ -1,0 +1,105 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.media-processor", "apps\net.media-processor\Eworks.AdworksMediaProcessor.csproj", "{53C93EE5-CE3C-4366-8468-45F8D3C72BEF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.media-common", "libs\net.media-common\Eworks.AdworksMediaCommon.csproj", "{FEB2750C-A7B9-481D-A3DE-F423679723EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.data-services", "libs\net.data-services\Eworks.AdworksDataServices.csproj", "{3C893D67-8DD6-49AC-B6FD-C14F9155FF27}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.message-bus", "libs\net.message-bus\Eworks.AdworksMessageBus.csproj", "{2DB872F2-29A1-4F0C-A5F1-95764FF85838}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.ffmpeg-media-services", "libs\net.ffmpeg-media-services\Eworks.AdworksFfmpegMediaServices.csproj", "{4E3D4079-4D82-49C3-8A9D-72127AAC9BCE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.message-common", "libs\net.message-common\Eworks.AdworksMessageCommon.csproj", "{72AE8BBB-E2CF-46F9-8C01-2230F17DC8DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.web-api", "apps\net.web-api\Eworks.AdworksWebApi.csproj", "{D648A0DC-1ED2-43DE-9841-691CBCA5875F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.video-converter", "libs\net.video-converter\Eworks.VideoConverter.csproj", "{CD01B56E-B843-4F3E-B9E3-55DD8C5C22F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.video-metadata", "libs\net.video-metadata\Eworks.VideoMetadata.csproj", "{8BBA8BB5-3AD7-4B21-9FA0-E77F2ECE2E07}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.networking", "libs\net.networking\Eworks.AdworksNetworking.csproj", "{E013EC9F-93F4-4D38-8612-FD733762AEBE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.scheduler", "libs\net.scheduler\Eworks.AdworksScheduler.csproj", "{70F8F50C-CF53-43DE-AFF8-D2C063DE2065}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.pi-player", "apps\net.pi-player\Eworks.AdworksPiPlayer.csproj", "{E546146B-EF10-4DE9-A64D-50B7FBE494CA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.database-setup", "apps\net.database-setup\Eworks.AdworksDatabaseSetup.csproj", "{7559FEF6-4709-4F1E-8C95-8D21F76539D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53C93EE5-CE3C-4366-8468-45F8D3C72BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C93EE5-CE3C-4366-8468-45F8D3C72BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C93EE5-CE3C-4366-8468-45F8D3C72BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C93EE5-CE3C-4366-8468-45F8D3C72BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEB2750C-A7B9-481D-A3DE-F423679723EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEB2750C-A7B9-481D-A3DE-F423679723EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEB2750C-A7B9-481D-A3DE-F423679723EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEB2750C-A7B9-481D-A3DE-F423679723EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C893D67-8DD6-49AC-B6FD-C14F9155FF27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C893D67-8DD6-49AC-B6FD-C14F9155FF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C893D67-8DD6-49AC-B6FD-C14F9155FF27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C893D67-8DD6-49AC-B6FD-C14F9155FF27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DB872F2-29A1-4F0C-A5F1-95764FF85838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB872F2-29A1-4F0C-A5F1-95764FF85838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DB872F2-29A1-4F0C-A5F1-95764FF85838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB872F2-29A1-4F0C-A5F1-95764FF85838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E3D4079-4D82-49C3-8A9D-72127AAC9BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E3D4079-4D82-49C3-8A9D-72127AAC9BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E3D4079-4D82-49C3-8A9D-72127AAC9BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E3D4079-4D82-49C3-8A9D-72127AAC9BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72AE8BBB-E2CF-46F9-8C01-2230F17DC8DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72AE8BBB-E2CF-46F9-8C01-2230F17DC8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72AE8BBB-E2CF-46F9-8C01-2230F17DC8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72AE8BBB-E2CF-46F9-8C01-2230F17DC8DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D648A0DC-1ED2-43DE-9841-691CBCA5875F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D648A0DC-1ED2-43DE-9841-691CBCA5875F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D648A0DC-1ED2-43DE-9841-691CBCA5875F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D648A0DC-1ED2-43DE-9841-691CBCA5875F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD01B56E-B843-4F3E-B9E3-55DD8C5C22F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD01B56E-B843-4F3E-B9E3-55DD8C5C22F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD01B56E-B843-4F3E-B9E3-55DD8C5C22F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD01B56E-B843-4F3E-B9E3-55DD8C5C22F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BBA8BB5-3AD7-4B21-9FA0-E77F2ECE2E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BBA8BB5-3AD7-4B21-9FA0-E77F2ECE2E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BBA8BB5-3AD7-4B21-9FA0-E77F2ECE2E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BBA8BB5-3AD7-4B21-9FA0-E77F2ECE2E07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5CEE1D7-5581-4660-9001-5B14F4447B1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5CEE1D7-5581-4660-9001-5B14F4447B1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5CEE1D7-5581-4660-9001-5B14F4447B1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5CEE1D7-5581-4660-9001-5B14F4447B1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E013EC9F-93F4-4D38-8612-FD733762AEBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E013EC9F-93F4-4D38-8612-FD733762AEBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E013EC9F-93F4-4D38-8612-FD733762AEBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E013EC9F-93F4-4D38-8612-FD733762AEBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F8F50C-CF53-43DE-AFF8-D2C063DE2065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F8F50C-CF53-43DE-AFF8-D2C063DE2065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F8F50C-CF53-43DE-AFF8-D2C063DE2065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F8F50C-CF53-43DE-AFF8-D2C063DE2065}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E546146B-EF10-4DE9-A64D-50B7FBE494CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E546146B-EF10-4DE9-A64D-50B7FBE494CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E546146B-EF10-4DE9-A64D-50B7FBE494CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E546146B-EF10-4DE9-A64D-50B7FBE494CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7559FEF6-4709-4F1E-8C95-8D21F76539D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7559FEF6-4709-4F1E-8C95-8D21F76539D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7559FEF6-4709-4F1E-8C95-8D21F76539D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7559FEF6-4709-4F1E-8C95-8D21F76539D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C5CEE1D7-5581-4660-9001-5B14F4447B1F} = {6AC4FC13-71B6-4DC1-A29A-98A2A21390C9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
+		SolutionGuid = {81B9E930-14D5-4A08-9712-B685738EA68F}
+	EndGlobalSection
+EndGlobal

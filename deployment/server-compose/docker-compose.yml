@@ -1,0 +1,62 @@
+version: '3.8'
+services:
+  mysql:
+    container_name: adworks-mysql
+    image: 'eworkspace/mysql'
+    restart: always
+    cap_add:
+      - SYS_NICE
+    command: 
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_USER=dbuser
+      - MYSQL_PASSWORD=Pr0t3ct3d!@#
+      - MYSQL_ROOT_PASSWORD=Pr0t3ct3d!
+  rabbitmq:
+    image: 'eworkspace/rabbitmq'
+    restart: always
+    container_name: adworks-rabbit
+    hostname: eworkspace-ca
+    environment:
+      RABBITMQ_DEFAULT_USER: "radmin"
+      RABBITMQ_DEFAULT_PASS: "Pr0t3ct3d"
+    ports:
+      - "5672:5672"
+      - "15672:15672"  
+  ftp:
+    image: 'eworkspace/vsftpd'
+    restart: always
+    container_name: adworks-ftp
+    volumes:
+      - media-share:/home/vsftpd/ftpuser
+    environment:
+      FTP_USER: "ftpuser"
+      FTP_PASS: "Lii4+B3Ce"
+      PASV_ADDRESS: "jeffjin.net"
+      PASV_MIN_PORT: "21100"
+      PASV_MAX_PORT: "21110"
+      PASV_ADDR_RESOLVE: "YES"
+      FILE_OPEN_MODE: "0777"
+      LOCAL_UMASK: "0002"
+    ports:
+      - "20:20"
+      - "21:21"  
+      - "21100-21110:21100-21110"  
+  nginx-rtmp:
+    image: 'eworkspace/nginx-rtmp'
+    restart: always
+    container_name: adworks-nginx-rtmp
+    volumes:
+      - media-share:/opt/nginx/www
+    ports:
+      - "1935:1935"
+      - "8081:8081"
+      - "5002:5002"
+volumes:
+  media-share:
+    external: true

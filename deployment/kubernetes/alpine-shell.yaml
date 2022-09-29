@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alpine
+  labels:
+    app: alpine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alpine
+  template:
+    metadata:
+      labels:
+        app: alpine
+    spec:
+      containers:
+      - name: alpine
+        image: alpine:3.7
+        command: ["/bin/sh", "-c", "while true; do sleep 9999; done;"]
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        securityContext:
+          privileged: true
+          # capabilities:
+          #   add: ['SYS_ADMIN', 'DAC_READ_SEARCH']

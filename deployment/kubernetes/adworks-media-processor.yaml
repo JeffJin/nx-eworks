@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-processor
+  labels:
+    app: media-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: media-processor
+  template:
+    metadata:
+      labels:
+        app: media-processor
+    spec:
+      nodeSelector:
+        power: high
+      containers:
+      - name: media-processor
+        image: eworkspace/media-processor:latest
+        imagePullPolicy: Always
+        env:
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: "Instance__Id"
+          value: "$(MY_POD_NAME)"
+        - name: ENABLE_SAMBA
+          value: "0"
+        - name: ASPNETCORE_ENVIRONMENT
+          value: prod
+        - name: "LogFile"
+          value: "files/logs-$(MY_POD_NAME)/processor.log"
+        - name: "ConnectionStrings__DefaultConnection"
+          value: "Server=adworks-mysql;Port=3306;Database=adworks;UserId=adworks_user;Password=E0aQ63o7lU;"
+        - name: "MessageQueueSettings__HostName"
+          value: "adworks-mq-rabbitmq-ha"
+        - name: "MessageQueueSettings__UserName"
+          value: "adworks-media-processor"
+        - name: "MessageQueueSettings__Password"
+          value: "cheuJae3aive6aiCil3metae"
+        - name: "MessageQueueSettings__Port"
+          value: "5671"
+        - name: "MessageQueueSettings__Ssl"
+          value: "true"
+        - name: "MessageQueueSettings__VirtualHost"
+          value: "/prod"
+        - name: "BaseAssetFolder"
+          value: "/mnt"
+        - name: "FFMpeg__ToolPath"
+          value: "FFMpeg/linux"
+        - name: "Ftp__Address"
+          value: "ftp://media.kiosho.io"
+        - name: "Ftp__UserName"
+          value: "media"
+        - name: "Ftp__Password"
+          value: "daipiphiengaipamohFoong9"
+        - name: "Ftp__Ssl"
+          value: "true"
+        - name: "Video__RtmpBaseUrl"
+          value: "rtmp://media.kiosho.io:1935/vod/"
+        - name: "Video__HttpBaseUrl"
+          value: "https://media.kiosho.io/videos/"
+        - name: "Audio__HttpBaseUrl"
+          value: "https://media.kiosho.io/audios/"
+        - name: "Image__HttpBaseUrl"
+          value: "https://media.kiosho.io/images/"
+        resources:
+          requests:
+            memory: 256Mi
+          limits:
+            memory: 512Mi
+        securityContext:
+          privileged: true
+          # capabilities:
+          #   add: ['SYS_ADMIN', 'DAC_READ_SEARCH']
+        volumeMounts:
+        - name: data
+          mountPath: /mnt
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: adworks-shared

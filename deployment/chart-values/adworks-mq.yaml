@@ -1,0 +1,324 @@
+## RabbitMQ application credentials
+## Ref: http://rabbitmq.com/access-control.html
+##
+rabbitmqUsername: adworks
+rabbitmqPassword: Jie3weeH2ukaipheitumieme
+
+## RabbitMQ default VirtualHost
+## Ref: https://www.rabbitmq.com/vhosts.html
+##
+rabbitmqVhost: "/"
+
+## Erlang cookie to determine whether different nodes are allowed to communicate with each other
+## Ref: https://www.rabbitmq.com/clustering.html
+##
+rabbitmqErlangCookie: eehaurue3cohng9ohMoa7Fac
+
+## RabbitMQ Memory high watermark
+## Ref: http://www.rabbitmq.com/memory.html
+##
+rabbitmqMemoryHighWatermark: 256MB
+
+## EPMD port for peer discovery service used by RabbitMQ nodes and CLI tools
+## Ref: https://www.rabbitmq.com/clustering.html
+##
+rabbitmqEpmdPort: 4369
+
+## Node port
+rabbitmqNodePort: 5672
+
+## Manager port
+rabbitmqManagerPort: 15672
+
+## Set to true to precompile parts of RabbitMQ with HiPE, a just-in-time
+## compiler for Erlang. This will increase server throughput at the cost of
+## increased startup time. You might see 20-50% better performance at the cost
+## of a few minutes delay at startup.
+rabbitmqHipeCompile: false
+
+## SSL certificates
+## Red: http://www.rabbitmq.com/ssl.html
+rabbitmqCert:
+  enabled: true
+
+  # Specifies an existing secret to be used for SSL Certs
+  existingSecret: ""
+
+  ## Create a new secret using these values
+  cacertfile: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUV0ekNDQTUrZ0F3SUJBZ0lKQUtoMmlxckFzVjJXTUEwR0NTcUdTSWIzRFFFQkN3VUFNSUdZTVFzd0NRWUQKVlFRR0V3SkRRVEVMTUFrR0ExVUVDQk1DVDA0eEVEQU9CZ05WQkFjVEIxUnZjbTl1ZEc4eEVEQU9CZ05WQkFvVApCMEZrZDI5eWEzTXhFekFSQmdOVkJBc1RDazl3WlhKaGRHbHZibk14RXpBUkJnTlZCQU1UQ2tGa2QyOXlhM01nClEwRXhFREFPQmdOVkJDa1RCMFZoYzNsU1UwRXhIREFhQmdrcWhraUc5dzBCQ1FFV0RXOXdjMEJsZDI5eWEzTXUKYVc4d0hoY05NVGd3TmpBNU1EUTBNVEl4V2hjTk1qZ3dOakEyTURRME1USXhXakNCbURFTE1Ba0dBMVVFQmhNQwpRMEV4Q3pBSkJnTlZCQWdUQWs5T01SQXdEZ1lEVlFRSEV3ZFViM0p2Ym5Sdk1SQXdEZ1lEVlFRS0V3ZEJaSGR2CmNtdHpNUk13RVFZRFZRUUxFd3BQY0dWeVlYUnBiMjV6TVJNd0VRWURWUVFERXdwQlpIZHZjbXR6SUVOQk1SQXcKRGdZRFZRUXBFd2RGWVhONVVsTkJNUnd3R2dZSktvWklodmNOQVFrQkZnMXZjSE5BWlhkdmNtdHpMbWx2TUlJQgpJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBd2o0dU9LaUlWZ1pzYjZCZGlGTE9Wb0o4CmZBVEJEMHVXeXg4bXNPWks2QTArNllMVnJHZjBMTHVCWnhiSGZubTJlNEtWTFFvZ0ZGZWY3eklsanc5VXEweEsKZURnSmF1UXowL283MnVMMUhUencxMUR3R09VaWRkRmRZUEdMN1l4amdnOHNJQzFlSVZhWFVqTVVDMkY0WkN5YwpHMC9WaVBhdVpSRVlGWTFZY3BnYkJ2cHE3YVVEOFNiV2dNNUJNaTM5RzRMdHIxQ2ZZTXlReTVqVHpHTTM2b1RvCmkrUEk1QXhVblBhaUtpd3didFRtenZaWmRUaWM2bTM5MWhuVkV6djFScFJOYk1LejNGdm9LdHM4QUZpenljMFgKMjV6YkYxRTFlOUJIQ3VJSkRScG4vQk1FTloyTmxBMFZ2N2ZHbWpIYnNiUU9qNWlKbkdMSTloNk11dU13R1FJRApBUUFCbzRJQkFEQ0IvVEFkQmdOVkhRNEVGZ1FVZ2x3Rmt0YTdURnpkWE0wajUxUUhUTkZqOVcwd2djMEdBMVVkCkl3U0J4VENCd29BVWdsd0ZrdGE3VEZ6ZFhNMGo1MVFIVE5GajlXMmhnWjZrZ1pzd2daZ3hDekFKQmdOVkJBWVQKQWtOQk1Rc3dDUVlEVlFRSUV3SlBUakVRTUE0R0ExVUVCeE1IVkc5eWIyNTBiekVRTUE0R0ExVUVDaE1IUVdSMwpiM0pyY3pFVE1CRUdBMVVFQ3hNS1QzQmxjbUYwYVc5dWN6RVRNQkVHQTFVRUF4TUtRV1IzYjNKcmN5QkRRVEVRCk1BNEdBMVVFS1JNSFJXRnplVkpUUVRFY01Cb0dDU3FHU0liM0RRRUpBUllOYjNCelFHVjNiM0pyY3k1cGI0SUoKQUtoMmlxckFzVjJXTUF3R0ExVWRFd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBSUtJMGVlOApZaTZXWmU3WjdUNTZnS1R2bnBFbG1zZm1HU1FMTFdaR2Zla3ZBRnVGRVRpUVhlUTdXWHR1VVdBZ2dQZjYrNjc2CkxNM3dSbXU1aC9HL0htSCthOXpJWWJhRG5Rc1FRTTZhVG5SVGJ6TVN5eUxGaGZKUVdjZnVXS0dYVWJNSXUzbUIKaVpjWlNYYjlMQyt6RWRMbk5VYVE5b1hYc3BqRnp0Wks1T3ljemFFR1IxSDJhcGlHY1V2bmxXUERjeUQwaDJFRQoxQklvWWhaQmtxWVBDME5tKy9ZZ0V2Y2VUSkRGNDBLWUZqYlUrNm0xNjJlL2ZBZFkvWllieURKWWZiRGEzSmRzCnp1ZlVKUWp1MDJlRnVrVkxwUytiSjUyZlExVVplTzRTZEx4L01DUkVUODhqUUdXVWRaR2RRSTR0WkJQd1pOM1gKT3pQWitmWGs4T3c3RWFrPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  certfile: Q2VydGlmaWNhdGU6CiAgICBEYXRhOgogICAgICAgIFZlcnNpb246IDMgKDB4MikKICAgICAgICBTZXJpYWwgTnVtYmVyOgogICAgICAgICAgICA2ZjowNjpmNTo2NDozMDpmNDoxZjpmYzo2ZjpmNzplNDpmZDowMzo3Nzo4ODphNQogICAgU2lnbmF0dXJlIEFsZ29yaXRobTogc2hhMjU2V2l0aFJTQUVuY3J5cHRpb24KICAgICAgICBJc3N1ZXI6IEM9Q0EsIFNUPU9OLCBMPVRvcm9udG8sIE89QWR3b3JrcywgT1U9T3BlcmF0aW9ucywgQ049QWR3b3JrcyBDQS9uYW1lPUVhc3lSU0EvZW1haWxBZGRyZXNzPW9wc0Bld29ya3MuaW8KICAgICAgICBWYWxpZGl0eQogICAgICAgICAgICBOb3QgQmVmb3JlOiBKdW4gIDkgMTc6MDI6NTkgMjAxOCBHTVQKICAgICAgICAgICAgTm90IEFmdGVyIDogSnVuICA2IDE3OjAyOjU5IDIwMjggR01UCiAgICAgICAgU3ViamVjdDogQ049YWR3b3Jrcy1tcS1yYWJiaXRtcS1oYQogICAgICAgIFN1YmplY3QgUHVibGljIEtleSBJbmZvOgogICAgICAgICAgICBQdWJsaWMgS2V5IEFsZ29yaXRobTogcnNhRW5jcnlwdGlvbgogICAgICAgICAgICAgICAgUHVibGljLUtleTogKDIwNDggYml0KQogICAgICAgICAgICAgICAgTW9kdWx1czoKICAgICAgICAgICAgICAgICAgICAwMDpjZTozZTpjNDo4OTplMzpiNjpkYTplOTo2MjozZDpiNTo5ODowMzozYToKICAgICAgICAgICAgICAgICAgICAzZDoyMToxMDo3ZTowYzpkMjpmYzpmNzozMzplMzo4NjoxNDoxOToxNTo4MjoKICAgICAgICAgICAgICAgICAgICAxMDowMzplNDoyMTo5ZjphNzo1ODo1OTpiYjoxMjo0NTo4YjowODpiODo2YzoKICAgICAgICAgICAgICAgICAgICBlNTo2NDo1ZjphYzpkMTo5Mzo3YjoyYjowMTphNzo3OTo2ODo5ZjoxZjo5MjoKICAgICAgICAgICAgICAgICAgICA5Njo4ZToxODo1YjpiNTo3MTplMDozYzphYjo3NjowYTpiMjowYjpjZTowZDoKICAgICAgICAgICAgICAgICAgICA1YTpmNDpjOTplMzozYTo2YzozMTo0ZjpmNDpmODpkMzpkZjoxMjpjZjo4YzoKICAgICAgICAgICAgICAgICAgICA0ZTo5ODplYjphMzo2OTplZjo4ZDpmNjpjZTo5NzozYjo3MjphMTphODoyZToKICAgICAgICAgICAgICAgICAgICAxNTphMzpiZTpmMjo5NjozODozMzo0Zjo5ZjowNDpjZTpjYzo1OTpiYjo3NToKICAgICAgICAgICAgICAgICAgICBlYzo2NDoxMzpjMTo3NTphZDo4NzoyZTo0Nzo5ODowNToxZDphOTo3NTpkNzoKICAgICAgICAgICAgICAgICAgICBlOTo4ZDo1MzpkYTpmYTozNzo2ZDoxZTo4OTo1ZDpmZTo4ZDo2ZDpiZDphNzoKICAgICAgICAgICAgICAgICAgICA4ZjpmNDpkNDo5MDo0NTplZToyODo5YzoyYjpjYzowNDpiZDoyMDplMjowODoKICAgICAgICAgICAgICAgICAgICA3YzoxNDpiNDoxODpkMjo1Yzo3NzoxMDpmYTo4Yjo4NToxODoyMDpkNzo2ZjoKICAgICAgICAgICAgICAgICAgICBlZDoxZDo2Zjo5ZDowMjowZTowZTpiMDo1ZTo0NDo5MjpiZTphODpiMzo2ZToKICAgICAgICAgICAgICAgICAgICA3ODo0YTo0NDplYzphMzpmZToyYjpmZDpjODoyYzpkZTo0YzoxNDplMDpkOToKICAgICAgICAgICAgICAgICAgICA3ODpiNjowNTo5YjpkOToxYjpmMDpkYzozZjowYTphNjo5YTo2Mzo3NjpmNzoKICAgICAgICAgICAgICAgICAgICA3Mjo2NDo4Mjo3NzpmMzplZTo1Nzo1NTozMzo5NDoxYTowMTpkNDpkNTo0NzoKICAgICAgICAgICAgICAgICAgICAwNDplYzplODpiODozNTo2MDo4NTpkODpjZDpiNTozNzoxNjoyNzo1NDpmMToKICAgICAgICAgICAgICAgICAgICA2MDpiZAogICAgICAgICAgICAgICAgRXhwb25lbnQ6IDY1NTM3ICgweDEwMDAxKQogICAgICAgIFg1MDl2MyBleHRlbnNpb25zOgogICAgICAgICAgICBYNTA5djMgQmFzaWMgQ29uc3RyYWludHM6IAogICAgICAgICAgICAgICAgQ0E6RkFMU0UKICAgICAgICAgICAgWDUwOXYzIFN1YmplY3QgS2V5IElkZW50aWZpZXI6IAogICAgICAgICAgICAgICAgOUQ6MEM6MTE6Q0Y6RjY6M0U6MDA6RTc6NDQ6ODc6Qzk6MDQ6N0E6QjU6QjY6QzU6RUE6RkU6NTk6RDcKICAgICAgICAgICAgWDUwOXYzIEF1dGhvcml0eSBLZXkgSWRlbnRpZmllcjogCiAgICAgICAgICAgICAgICBrZXlpZDo4Mjo1QzowNTo5MjpENjpCQjo0Qzo1QzpERDo1QzpDRDoyMzpFNzo1NDowNzo0QzpEMTo2MzpGNTo2RAogICAgICAgICAgICAgICAgRGlyTmFtZTovQz1DQS9TVD1PTi9MPVRvcm9udG8vTz1BZHdvcmtzL09VPU9wZXJhdGlvbnMvQ049QWR3b3JrcyBDQS9uYW1lPUVhc3lSU0EvZW1haWxBZGRyZXNzPW9wc0Bld29ya3MuaW8KICAgICAgICAgICAgICAgIHNlcmlhbDpBODo3Njo4QTpBQTpDMDpCMTo1RDo5NgoKICAgICAgICAgICAgWDUwOXYzIEV4dGVuZGVkIEtleSBVc2FnZTogCiAgICAgICAgICAgICAgICBUTFMgV2ViIFNlcnZlciBBdXRoZW50aWNhdGlvbgogICAgICAgICAgICBYNTA5djMgS2V5IFVzYWdlOiAKICAgICAgICAgICAgICAgIERpZ2l0YWwgU2lnbmF0dXJlLCBLZXkgRW5jaXBoZXJtZW50CiAgICAgICAgICAgIFg1MDl2MyBTdWJqZWN0IEFsdGVybmF0aXZlIE5hbWU6IAogICAgICAgICAgICAgICAgRE5TOmFkd29ya3MtbXEtcmFiYml0bXEtaGEsIEROUzptcS5rcy5saW5rMi5jbwogICAgU2lnbmF0dXJlIEFsZ29yaXRobTogc2hhMjU2V2l0aFJTQUVuY3J5cHRpb24KICAgICAgICAgODQ6YWY6M2E6MjY6NjI6YWU6M2Y6MTg6NDc6ZDk6OTI6Nzk6ZWE6ZjA6MWI6MWI6NzM6NjE6CiAgICAgICAgIDM2OjM4OjcxOjU2OjI0OjAxOjlmOjM1OjgzOjcyOjI1OjZlOmE4OjdlOjZhOjBjOjg0OmMxOgogICAgICAgICBmMzo5YzphODowYTo1ODozYjo1Yzo3ZDozOTphOTpjZTo2MjplYzo0MjplZjo5ZjozODowNToKICAgICAgICAgZjU6Y2U6MGE6ZmU6M2Y6YmE6YTc6Njg6ZjI6YmQ6NjM6ZTY6MWI6YzQ6ODM6ZWU6OWU6MzE6CiAgICAgICAgIGIxOjY4OmJmOmU3OmRkOjU1OjdhOmY1OmViOjJiOjY2OmZmOjdmOjQwOmE1OmU2OmVjOjNmOgogICAgICAgICA3ZTowNzoxYzo5YTpmMDo5MDozMDo5Njo4MjpjNTo3OTpmZTo5Mjo4ZTpmNDoxNzozZTozMjoKICAgICAgICAgN2Y6OGM6M2Q6OGY6MzE6NDA6MTg6ODQ6MWQ6YzU6MWU6Yjc6YTE6M2I6MjE6YTY6MjE6OWE6CiAgICAgICAgIGE2Ojg5OjY3OmM4OjkxOmFiOjgwOjM3OmEwOjg4OmQ0OjVkOmNhOmU5OmFhOjUzOjFjOmJkOgogICAgICAgICA3ZDo3ZjpjNzo1MDo1Njo5ZjoyNTpjZjplNjpjMjo5OTpkOTo3NDo2OTowMjoyODpmNjoyOToKICAgICAgICAgOWU6YmQ6OWQ6YjI6YzA6NDQ6YTE6YTQ6OTM6ZjE6MTE6ODA6ZDU6NmY6NDM6YzA6NTI6YzU6CiAgICAgICAgIDAzOjkyOmYxOjA4OjM5OjYwOmI4OjA0OjU3OjQyOmY5OjI1OjkwOjEzOmE4OmZhOjFjOmY4OgogICAgICAgICAxMTowMzplMDo2Zjo5NzpjZDplMjo0MTo4OTpjNToyNTplZTo5Njo0ZDo5NjoxMDo5Njo5YzoKICAgICAgICAgODQ6Yzg6NDc6MDA6OTI6YmY6NmQ6Yjc6YjA6ODE6MWY6YzA6OTE6MGM6NmY6OGU6NTY6YmE6CiAgICAgICAgIGRkOmE2Ojk3OmJiOjg4Ojk5OjYzOmJlOjdjOjYxOmQ1OmFkOjhjOmVmOmUyOjYxOmI4OjMzOgogICAgICAgICBlMzo4NzphYTpjYwotLS0tLUJFR0lOIENFUlRJRklDQVRFLS0tLS0KTUlJRW1UQ0NBNEdnQXdJQkFnSVFid2IxWkREMEgveHY5K1Q5QTNlSXBUQU5CZ2txaGtpRzl3MEJBUXNGQURDQgptREVMTUFrR0ExVUVCaE1DUTBFeEN6QUpCZ05WQkFnVEFrOU9NUkF3RGdZRFZRUUhFd2RVYjNKdmJuUnZNUkF3CkRnWURWUVFLRXdkQlpIZHZjbXR6TVJNd0VRWURWUVFMRXdwUGNHVnlZWFJwYjI1ek1STXdFUVlEVlFRREV3cEIKWkhkdmNtdHpJRU5CTVJBd0RnWURWUVFwRXdkRllYTjVVbE5CTVJ3d0dnWUpLb1pJaHZjTkFRa0JGZzF2Y0hOQQpaWGR2Y210ekxtbHZNQjRYRFRFNE1EWXdPVEUzTURJMU9Wb1hEVEk0TURZd05qRTNNREkxT1Zvd0lURWZNQjBHCkExVUVBeE1XWVdSM2IzSnJjeTF0Y1MxeVlXSmlhWFJ0Y1Mxb1lUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQUQKZ2dFUEFEQ0NBUW9DZ2dFQkFNNCt4SW5qdHRycFlqMjFtQU02UFNFUWZnelMvUGN6NDRZVUdSV0NFQVBrSVorbgpXRm03RWtXTENMaHM1V1Jmck5HVGV5c0JwM2xvbngrU2xvNFlXN1Z4NER5cmRncXlDODROV3ZUSjR6cHNNVS8wCitOUGZFcytNVHBqcm8ybnZqZmJPbHp0eW9hZ3VGYU8rOHBZNE0wK2ZCTTdNV2J0MTdHUVR3WFd0aHk1SG1BVWQKcVhYWDZZMVQydm8zYlI2SlhmNk5iYjJuai9UVWtFWHVLSndyekFTOUlPSUlmQlMwR05KY2R4RDZpNFVZSU5kdgo3UjF2blFJT0RyQmVSSksrcUxOdWVFcEU3S1ArSy8zSUxONU1GT0RaZUxZRm05a2I4TncvQ3FhYVkzYjNjbVNDCmQvUHVWMVV6bEJvQjFOVkhCT3pvdURWZ2hkak50VGNXSjFUeFlMMENBd0VBQWFPQ0FWTXdnZ0ZQTUFrR0ExVWQKRXdRQ01BQXdIUVlEVlIwT0JCWUVGSjBNRWMvMlBnRG5SSWZKQkhxMXRzWHEvbG5YTUlITkJnTlZIU01FZ2NVdwpnY0tBRklKY0JaTFd1MHhjM1Z6TkkrZFVCMHpSWS9WdG9ZR2VwSUdiTUlHWU1Rc3dDUVlEVlFRR0V3SkRRVEVMCk1Ba0dBMVVFQ0JNQ1QwNHhFREFPQmdOVkJBY1RCMVJ2Y205dWRHOHhFREFPQmdOVkJBb1RCMEZrZDI5eWEzTXgKRXpBUkJnTlZCQXNUQ2s5d1pYSmhkR2x2Ym5NeEV6QVJCZ05WQkFNVENrRmtkMjl5YTNNZ1EwRXhFREFPQmdOVgpCQ2tUQjBWaGMzbFNVMEV4SERBYUJna3Foa2lHOXcwQkNRRVdEVzl3YzBCbGQyOXlhM011YVcrQ0NRQ29kb3FxCndMRmRsakFUQmdOVkhTVUVEREFLQmdnckJnRUZCUWNEQVRBTEJnTlZIUThFQkFNQ0JhQXdNUVlEVlIwUkJDb3cKS0lJV1lXUjNiM0pyY3kxdGNTMXlZV0ppYVhSdGNTMW9ZWUlPYlhFdWEzTXViR2x1YXpJdVkyOHdEUVlKS29aSQpodmNOQVFFTEJRQURnZ0VCQUlTdk9pWmlyajhZUjltU2VlcndHeHR6WVRZNGNWWWtBWjgxZzNJbGJxaCthZ3lFCndmT2NxQXBZTzF4OU9hbk9ZdXhDNzU4NEJmWE9DdjQvdXFkbzhyMWo1aHZFZys2ZU1iRm92K2ZkVlhyMTZ5dG0KLzM5QXBlYnNQMzRISEpyd2tEQ1dnc1Y1L3BLTzlCYytNbitNUFk4eFFCaUVIY1VldDZFN0lhWWhtcWFKWjhpUgpxNEEzb0lqVVhjcnBxbE1jdlgxL3gxQldueVhQNXNLWjJYUnBBaWoyS1o2OW5iTEFSS0dray9FUmdOVnZROEJTCnhRT1M4UWc1WUxnRVYwTDVKWkFUcVBvYytCRUQ0RytYemVKQmljVWw3cFpObGhDV25JVElSd0NTdjIyM3NJRWYKd0pFTWI0NVd1dDJtbDd1SW1XTytmR0hWcll6djRtRzRNK09IcXN3PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  keyfile: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktnd2dnU2tBZ0VBQW9JQkFRRE9Qc1NKNDdiYTZXSTkKdFpnRE9qMGhFSDRNMHZ6M00rT0dGQmtWZ2hBRDVDR2ZwMWhadXhKRml3aTRiT1ZrWDZ6Umszc3JBYWQ1YUo4ZgprcGFPR0Z1MWNlQThxM1lLc2d2T0RWcjB5ZU02YkRGUDlQalQzeExQakU2WTY2TnA3NDMyenBjN2NxR29MaFdqCnZ2S1dPRE5QbndUT3pGbTdkZXhrRThGMXJZY3VSNWdGSGFsMTErbU5VOXI2TjIwZWlWMytqVzI5cDQvMDFKQkYKN2lpY0s4d0V2U0RpQ0h3VXRCalNYSGNRK291RkdDRFhiKzBkYjUwQ0RnNndYa1NTdnFpemJuaEtST3lqL2l2OQp5Q3plVEJUZzJYaTJCWnZaRy9EY1B3cW1tbU4yOTNKa2duZno3bGRWTTVRYUFkVFZSd1RzNkxnMVlJWFl6YlUzCkZpZFU4V0M5QWdNQkFBRUNnZ0VBU0FKK1dLNmJEMy9nL3k3Q0xvNU0vWmhtaWsrNFp3OUU1M0ZvK0t0NnNBRWQKQkVOSGc3emZPa3k2OUxtQXRqVDVnQXNBUEJuTndZUVgyc3d4cU5jMFhmdXVrVUJFYktPUm41WG1KZ1cvUW95NApBdlREVkNaVXlRWnlBczV6TmUrZ0g0WXVJMkY0cytHelNJTEk3RTRmRERPM1dBVGRaNmhhcXU2QzQzVjg5MWtDCnBYSVJBNFlTOGI3VGc3bGxsUmR4OUp0MjlBRHdhc1ZkSDRtNkNaUmNYVFFpQ0YwYktSQUdsUzNnNEo3elpMVFMKZTRBS1pqVGZZZk1aZWdOM0dyVUtxVUUwei9SYXZGUDVTNnlXSEgzb3VueXpGazRGMTU0dWN1K09QT1lnWk1UMgo2ZlIwTXcvVkR6dXloNmRiZngrRHNnWnBYVFhWVlJvR1pkSEtsL2ZoT1FLQmdRRCtCWkFjbDFXRVFjMk5yKy9xCjY2N1AvTjZENnJUZDlET2FGeEJ6ejB5MERUbkNGdkFXcDhpais2MzBoOFo0VkNza3oyT29FNklZb1Q2am5PWi8KNW5PcXdHbmVkc1p0Y1ovREZRd2EvbXUyL005cVlGc1FUMDBHL1pTbjhCclFHRG5aUVVpK09ENWp3M0Z4c1pUTQpoV3RHZmNVbGJwYThhdlZvUHNiajF2czlWd0tCZ1FEUDJmUXVyQlcyT3RXK2FsVmQ3QmNpNU1mSEZKOHZROElaCjZDdjdLRG9TM3J6Y3BxSHgybTkwVlRYK2NtSFZRbFRpUUVXcUZZTnZsUHdobXJJaVJMeVpyanlWaEZ4WUNCMlgKZWhEZ1FXOGgyamtHKy9NaFRYdXluSnpRRkg2VG9PbWpGYURPK1J1d1hRS3JJV2drUnJJR3g2SXVnL0JQeU5UaAovbDhPWmJOeUN3S0JnUUNjK1cwVDdnVC9wUFpVYjN1d1RaS0tudllXeVF5WitGV0hER2V6V1ZCS0Y3NHdqYUl5CkxkOFVUdXd4cDFIamZBZnBTR3VLS3cvSmJxTlowaFN5eHdPRmFrQkNKRjM4dGZHSFNWTmd2d1pyWHhFQjZLZDkKamJQSTlSMVBKbFk3Y0MwWGIzdDNhU1JNM0RNWGtpaWt0bklUYnBkTXlXbEc2RVhjOUtaTmw4Vk1Jd0tCZ0YrcgpMVVpTTk1na3VuOGppRmxyc3BhQUFTZ3o2TFVqbGZMQXQ0V3AxVmtjSm9mVk50TVFQSjZxSGVrWkVzaksrREVQCmJrRkVGN1JET2UzcHV6WWt0ejV4UVRkOHJkaGpHK085N29pWjlhSDZSS2RmVG1BMHZzdk9aQ3N1VTdoMXB6UkcKWHpjRTErYk1XTThWMkU1aUw4MEpGREFlMEh5WXJzdTZmbHd0R1hSVEFvR0JBSmozOU9OeStaak9EMS9idWNDbQpQNW1HdlJrUWU1azQ1UFVJZlVrenhSeHptcTNkYXUyemcwTU5ra3J2STRiRkdZWDlZUzUrZ0NwZW5UcUNSTlJnCjVVYVA0WXVZaG5nVUFhK0d1MnQyZEYzNEJDZDBlWUo4ZER4N0F0dlN0N0gyQmgxL3ZPMW55OWtWVG93MnkwelAKeUhoTWJxVnVhTDRXNEZhaTQvN0oyTjFwCi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K
+
+## Authentication mechanism
+## Ref: http://www.rabbitmq.com/authentication.html
+rabbitmqAuth:
+  enabled: false
+
+  config: |
+    # auth_mechanisms.1 = PLAIN
+    # auth_mechanisms.2 = AMQPLAIN
+    # auth_mechanisms.3 = EXTERNAL
+## LDAP Plugin
+## Ref: http://www.rabbitmq.com/ldap.html
+rabbitmqLDAPPlugin:
+  enabled: false
+
+  ## LDAP configuration:
+  config: |
+    # auth_backends.1 = ldap
+    # auth_ldap.servers.1  = my-ldap-server
+    # auth_ldap.user_dn_pattern = cn=${username},ou=People,dc=example,dc=com
+    # auth_ldap.use_ssl    = false
+    # auth_ldap.port       = 389
+    # auth_ldap.log        = false
+## MQTT Plugin
+## Ref: http://www.rabbitmq.com/mqtt.html
+rabbitmqMQTTPlugin:
+  enabled: false
+
+  ## MQTT configuration:
+  config: |
+    # mqtt.default_user     = guest
+    # mqtt.default_pass     = guest
+    # mqtt.allow_anonymous  = true
+## Web MQTT Plugin
+## Ref: http://www.rabbitmq.com/web-mqtt.html
+rabbitmqWebMQTTPlugin:
+  enabled: false
+
+  ## Web MQTT configuration:
+  config: |
+    # web_mqtt.ssl.port       = 12345
+    # web_mqtt.ssl.backlog    = 1024
+    # web_mqtt.ssl.certfile   = /etc/cert/cacert.pem
+    # web_mqtt.ssl.keyfile    = /etc/cert/cert.pem
+    # web_mqtt.ssl.cacertfile = /etc/cert/key.pem
+    # web_mqtt.ssl.password   = changeme
+## STOMP Plugin
+## Ref: http://www.rabbitmq.com/stomp.html
+rabbitmqSTOMPPlugin:
+  enabled: false
+
+  ## STOMP configuration:
+  config: |
+    # stomp.default_user = guest
+    # stomp.default_pass = guest
+## Web STOMP Plugin
+## Ref: http://www.rabbitmq.com/web-stomp.html
+rabbitmqWebSTOMPPlugin:
+  enabled: false
+
+  ## Web STOMP configuration:
+  config: |
+    # web_stomp.ws_frame = binary
+    # web_stomp.cowboy_opts.max_keepalive = 10
+## AMQPS support
+## Ref: http://www.rabbitmq.com/ssl.html
+rabbitmqAmqpsSupport:
+  enabled: true
+
+  # NodePort
+  amqpsNodePort: 5671
+
+  # SSL configuration
+  config: |
+    listeners.ssl.default             = 5671
+    ssl_options.cacertfile            = /etc/cert/cacert.pem
+    ssl_options.certfile              = /etc/cert/cert.pem
+    ssl_options.keyfile               = /etc/cert/key.pem
+    ssl_options.verify                = verify_peer
+    ssl_options.fail_if_no_peer_cert  = false
+
+    management.listener.port = 15672
+    management.listener.ssl = true
+    management.listener.ssl_opts.cacertfile = /etc/cert/cacert.pem
+    management.listener.ssl_opts.certfile = /etc/cert/cert.pem
+    management.listener.ssl_opts.keyfile = /etc/cert/key.pem
+    management.listener.ssl_opts.verify = verify_peer
+    management.listener.ssl_opts.fail_if_no_peer_cert = false
+
+## Number of replicas
+replicaCount: 3
+
+image:
+  repository: rabbitmq
+  tag: 3.7.5-management
+  pullPolicy: IfNotPresent
+
+## Duration in seconds the pod needs to terminate gracefully
+terminationGracePeriodSeconds: 30
+
+service:
+  annotations: {}
+  clusterIP: ""
+
+  ## List of IP addresses at which the service is available
+  ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
+  ##
+  externalIPs: []
+
+  loadBalancerIP: ""
+  loadBalancerSourceRanges: []
+  type: LoadBalancer
+
+## Statefulsets rolling update update strategy
+## Ref: https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/#rolling-update
+##
+updateStrategy: OnDelete
+
+## We usually recommend not to specify default resources and to leave this as
+## a conscious choice for the user. This also increases chances charts run on
+## environments with little resources, such as Minikube. If you do want to
+## specify resources, uncomment the following lines, adjust them as necessary,
+## and remove the curly braces after 'resources:'.
+## If you decide to set the memory limit, make sure to also change the
+## rabbitmqMemoryHighWatermark following the formula:
+##   rabbitmqMemoryHighWatermark = 0.4 * resources.limits.memory
+##
+resources:
+# limits:
+#  cpu: 100m
+#  memory: 1Gi
+  requests:
+    cpu: 100m
+    memory: 512Mi
+
+
+## Data Persistency
+persistentVolume:
+  enabled: true
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  # storageClass: "-"
+  name: data
+  accessModes:
+    - ReadWriteOnce
+  size: 8Gi
+  annotations: {}
+
+## Node labels for pod assignment
+## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
+##
+nodeSelector:
+  power: low
+
+## Node tolerations for pod assignment
+## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
+##
+tolerations: []
+
+## Pod affinity
+## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+podAntiAffinity: soft
+
+## Create default configMap
+##
+existingConfigMap: false
+
+## Add additional labels to all resources
+##
+extraLabels: {}
+
+## Role Based Access
+## Ref: https://kubernetes.io/docs/admin/authorization/rbac/
+##
+rbac:
+  create: true
+
+## Service Account
+## Ref: https://kubernetes.io/docs/admin/service-accounts-admin/
+##
+serviceAccount:
+  create: true
+
+  ## The name of the ServiceAccount to use.
+  ## If not set and create is true, a name is generated using the fullname template
+  # name:
+
+ingress:
+  ## Set to true to enable ingress record generation
+  enabled: false
+
+  path: /
+
+  ## The list of hostnames to be covered with this ingress record.
+  ## Most likely this will be just one host, but in the event more hosts are needed, this is an array
+  ## hostName: foo.bar.com
+
+  ## Set this to true in order to enable TLS on the ingress record
+  tls: false
+
+  ## If TLS is set to true, you must declare what secret will store the key/certificate for TLS
+  tlsSecret: myTlsSecret
+
+  ## Ingress annotations done as key:value pairs
+  annotations:
+  #  kubernetes.io/ingress.class: nginx
+
+livenessProbe:
+  initialDelaySeconds: 120
+  timeoutSeconds: 5
+  failureThreshold: 6
+
+readinessProbe:
+  initialDelaySeconds: 10
+  timeoutSeconds: 3
+  periodSeconds: 5
+
+# Specifies an existing secret to be used for RMQ password and Erlang Cookie
+existingSecret: ""
+
+prometheus:
+  ## Configures Prometheus Exporter to expose and scrape stats.
+  exporter:
+    enabled: false
+    env: {}
+    image:
+      repository: kbudde/rabbitmq-exporter
+      tag: v0.28.0
+      pullPolicy: IfNotPresent
+
+    ## Port Prometheus scrapes for metrics
+    port: 9090
+
+    ## Allow overriding of container resources
+    resources: {}
+     # limits:
+     #   cpu: 200m
+     #   memory: 1Gi
+     # requests:
+     #   cpu: 100m
+     #   memory: 100Mi
+
+  ## Prometheus is using Operator.  Setting to true will create Operator specific resources like ServiceMonitors and Alerts
+  operator:
+    ## Are you using Prometheus Operator? [Blog Post](https://coreos.com/blog/the-prometheus-operator.html)
+    enabled: true
+
+    ## Configures Alerts, which will be setup via Prometheus Operator / ConfigMaps.
+    alerts:
+      ## Prometheus exporter must be enabled as well
+      enabled: true
+
+      ## Selector must be configured to match Prometheus Install, defaulting to whats done by Prometheus Operator
+      ## See [CoreOS Prometheus Chart](https://github.com/coreos/prometheus-operator/tree/master/helm)
+      selector:
+        role: alert-rules
+      labels: {}
+
+    serviceMonitor:
+      ## Interval at which Prometheus scrapes RabbitMQ Exporter
+      interval: 10s
+
+      # Namespace Prometheus is installed in
+      namespace: monitoring
+
+      ## Defaults to whats used if you follow CoreOS [Prometheus Install Instructions](https://github.com/coreos/prometheus-operator/tree/master/helm#tldr)
+      ## [Prometheus Selector Label](https://github.com/coreos/prometheus-operator/blob/master/helm/prometheus/templates/prometheus.yaml#L65)
+      ## [Kube Prometheus Selector Label](https://github.com/coreos/prometheus-operator/blob/master/helm/kube-prometheus/values.yaml#L298)
+      selector:
+        prometheus: kube-prometheus

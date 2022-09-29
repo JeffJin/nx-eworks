@@ -1,0 +1,1 @@
+ jdbc:monetdb://{host::localhost}[:{port::50000}][/{database}?][\?<&,user={user:param}&password={password:param},{:identifier}={:param}>]

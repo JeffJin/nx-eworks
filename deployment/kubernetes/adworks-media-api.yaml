@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adworks-api
+  labels:
+    app: adworks-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adworks-api
+  template:
+    metadata:
+      labels:
+        app: adworks-api
+    spec:
+      containers:
+      - name: adworks-api
+        image: eworkspace/adworks-api:latest
+        imagePullPolicy: Always
+        env:
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: "Instance__Id"
+          value: "$(MY_POD_NAME)"
+        - name: ENABLE_SAMBA
+          value: "0"
+        - name: ASPNETCORE_ENVIRONMENT
+          value: prod
+        - name: "LogFile"
+          value: "files/logs-$(MY_POD_NAME)/api.log"
+        - name: "Instance__Id"
+          value: "$(MY_POD_NAME)"
+        - name: "ConnectionStrings__DefaultConnection"
+          value: "Server=adworks-mysql;Port=3306;Database=adworks;UserId=adworks_user;Password=E0aQ63o7lU;"
+        - name: "MessageQueueSettings__HostName"
+          value: "adworks-mq-rabbitmq-ha"
+        - name: "MessageQueueSettings__UserName"
+          value: "adworks-media-web-api"
+        - name: "MessageQueueSettings__Password"
+          value: "biezoh0Zeen3tie9mux6omuw"
+        - name: "MessageQueueSettings__Port"
+          value: "5671"
+        - name: "MessageQueueSettings__Ssl"
+          value: "true"
+        - name: "MessageQueueSettings__VirtualHost"
+          value: "/prod"
+        - name: "BaseAssetFolder"
+          value: "/mnt"
+        - name: "FFMpeg__ToolPath"
+          value: "FFMpeg/linux"
+        - name: "Ftp__Address"
+          value: "ftp://media.kiosho.io"
+        - name: "Ftp__UserName"
+          value: "media"
+        - name: "Ftp__Password"
+          value: "daipiphiengaipamohFoong9"
+        - name: "Ftp__Ssl"
+          value: "true"
+        - name: "Video__RtmpBaseUrl"
+          value: "rtmp://media.kiosho.io:1935/vod/"
+        - name: "Video__HttpBaseUrl"
+          value: "https://media.kiosho.io/videos/"
+        - name: "Audio__HttpBaseUrl"
+          value: "https://media.kiosho.io/audios/"
+        - name: "Image__HttpBaseUrl"
+          value: "https://media.kiosho.io/images/"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        securityContext:
+          privileged: true
+          # capabilities:
+          #   add: ['SYS_ADMIN', 'DAC_READ_SEARCH']
+        volumeMounts:
+        - name: data
+          mountPath: /mnt
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: adworks-shared
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adworks-api
+spec:
+  selector:
+    app: adworks-api
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 5000
+  sessionAffinity: ClientIP
+  type: ClusterIP

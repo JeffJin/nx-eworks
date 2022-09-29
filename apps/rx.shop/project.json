@@ -1,0 +1,80 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/rx.shop/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/rx.shop",
+        "index": "apps/rx.shop/src/index.html",
+        "baseHref": "/",
+        "main": "apps/rx.shop/src/main.tsx",
+        "polyfills": "apps/rx.shop/src/polyfills.ts",
+        "tsConfig": "apps/rx.shop/tsconfig.app.json",
+        "assets": ["apps/rx.shop/src/favicon.ico", "apps/rx.shop/src/assets"],
+        "styles": ["apps/rx.shop/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/rx.shop/src/environments/environment.ts",
+              "with": "apps/rx.shop/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "rx.shop:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "rx.shop:build:development"
+        },
+        "production": {
+          "buildTarget": "rx.shop:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/rx.shop/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/rx.shop"],
+      "options": {
+        "jestConfig": "apps/rx.shop/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
