@@ -3,7 +3,7 @@ WORKDIR /app
 
 # Copy everything else and build
 COPY . ./
-RUN dotnet publish -r ubuntu.20.04-x64 --self-contained true -c Release -o adworks.media-web-api/out adworks.media-web-api/adworks.media-web-api.csproj
+RUN dotnet publish -r linux-x64 --self-contained true -c Release -o adworks.media-web-api/out adworks.media-web-api/adworks.media-web-api.csproj
 
 RUN mkdir p ~/adworks
 
