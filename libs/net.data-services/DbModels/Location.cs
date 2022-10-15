@@ -7,12 +7,12 @@ namespace adworks.data_services.DbModels
     {
         [Required]
         public string Address { get; set; }
-        public string Locale { get; set; }
+        public string? Locale { get; set; }
         [Required]
         public double TimezoneOffset { get; set; }
-        
-        public ICollection<Device> Devices { get; } = new List<Device>();
-        public ICollection<Appointment> Appointments { get; } = new List<Appointment>();
+
+        public ICollection<Device>? Devices { get; } = new List<Device>();
+        public ICollection<Appointment>? Appointments { get; } = new List<Appointment>();
 
     }
 }

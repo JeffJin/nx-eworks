@@ -9,15 +9,15 @@ namespace adworks.data_services.DbModels
         public double Duration { get; set; }
 
         [Column(TypeName = "varchar(512)")]
-        public string ThumbnailLink { get; set; }
+        public string? ThumbnailLink { get; set; }
 
         [Column(TypeName = "varchar(512)")]
-        public string VodVideoUrl { get; set; }
-        
+        public string? VodVideoUrl { get; set; }
+
         [Column(TypeName = "varchar(512)")]
-        public string EncodedVideoPath { get; set; }
-        
+        public string? EncodedVideoPath { get; set; }
+
         [Column(TypeName = "varchar(512)")]
-        public string ProgressiveVideoUrl { get; set; }
+        public string? ProgressiveVideoUrl { get; set; }
     }
 }

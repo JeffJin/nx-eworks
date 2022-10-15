@@ -29,7 +29,6 @@ namespace adworks.media_processor.Processors
         private string _imageFolder;
         private IConfiguration _configuration;
         private ISubscription _subscription;
-        private string _ftpProcessorAddress;
         private string _ftpStreamingAddress;
         private string _instanceId;
 
@@ -47,7 +46,6 @@ namespace adworks.media_processor.Processors
 
             _imageFolder = this._configuration["Ftp:ImageFolder"];
             _ftpStreamingAddress = this._configuration["Ftp:StreamingAddress"];
-            _ftpProcessorAddress = this._configuration["Ftp:ProcessorAddress"];
             var instance = configuration.GetSection("Instance").Get<Instance>();
             _instanceId = instance.Id;
         }

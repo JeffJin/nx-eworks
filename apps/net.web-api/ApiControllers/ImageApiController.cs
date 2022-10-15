@@ -27,7 +27,6 @@ namespace adworks.media_web_api.Controllers
         private readonly IFtpService _ftpService;
         private readonly IMessageClient _messageClient;
         private readonly string _imageFolder;
-        private string _ftpProcessorAddress;
         private string _ftpStreamingAddress;
 
         // Get the default form options so that we can use them to set the default limits for
@@ -42,7 +41,6 @@ namespace adworks.media_web_api.Controllers
             _fileService = fileService;
             _ftpService = ftpService;
             _messageClient = messageClient;
-            _ftpProcessorAddress = _configuration["Ftp:ProcessorAddress"];
             _ftpStreamingAddress = _configuration["Ftp:StreamingAddress"];
         }
 

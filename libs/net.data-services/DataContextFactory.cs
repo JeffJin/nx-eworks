@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using adworks.data_services.DbModels;
+﻿using adworks.data_services.DbModels;
 using adworks.data_services.Identity;
-using adworks.networking;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using Serilog;
+using Microsoft.EntityFrameworkCore.Design;
 using ILogger = Serilog.ILogger;
 
 namespace adworks.data_services
 {
-    public class DataContextFactory : IDataContextFactory
+    public class DataContextFactory : IDataContextFactory, IDesignTimeDbContextFactory<CommonDbContext>
     {
-        private readonly ILogger _logger;
+        private readonly ILogger? _logger;
 
         public DataContextFactory()
         {
@@ -30,6 +23,11 @@ namespace adworks.data_services
         public CommonDbContext Create()
         {
             return new CommonDbContext(_logger);
+        }
+
+        public CommonDbContext CreateDbContext(string[] args)
+        {
+          return Create();
         }
 
         public static void Cleanup()
@@ -54,7 +52,6 @@ namespace adworks.data_services
                 context.Database.ExecuteSqlRaw("delete from Users where Email <> 'admin@eworkspace.ca' AND Email <> 'jeff@jeffjin.com'");
                 context.Database.ExecuteSqlRaw("delete from Organizations where Name <> 'kiosho'");
             }
-
         }
 
         public static void Cleanup(string clause)

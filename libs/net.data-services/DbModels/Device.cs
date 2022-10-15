@@ -12,18 +12,18 @@ namespace adworks.data_services.DbModels
         [MinLength(5)]
         [MaxLength(64)]
         public string SerialNumber { get; set; }
-        public string AssetTag { get; set; }
+        public string? AssetTag { get; set; }
         public int DeviceVersion { get; set; }
         public int AppVersion { get; set; }
         public DateTimeOffset? ActivatedOn { get; set; }
-        
-        [JsonIgnore]
-        public ICollection<License> Licenses { get; } = new List<License>();
 
         [JsonIgnore]
-        public DeviceGroup DeviceGroup { get; set; }
-              
+        public ICollection<License>? Licenses { get; } = new List<License>();
+
         [JsonIgnore]
-        public Location Location { get; set; }
+        public DeviceGroup? DeviceGroup { get; set; }
+
+        [JsonIgnore]
+        public Location? Location { get; set; }
     }
 }

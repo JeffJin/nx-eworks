@@ -7,7 +7,7 @@ namespace adworks.data_services.DbModels
     public class Order: Entity
     {
         public double Discount { get; set; }
-        public User Customer { get; set; }
-        public ICollection<OrderItem> OrderItems { get; } = new List<OrderItem>();
+        public User? Customer { get; set; }
+        public ICollection<OrderItem>? OrderItems { get; } = new List<OrderItem>();
     }
 }

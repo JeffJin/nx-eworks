@@ -10,6 +10,6 @@ namespace adworks.data_services.DbModels
         [Required]
         [JsonIgnore]
         public Device Device { get; set; }
-        public string Status { get; set; } //Online, Offline, PendingPayment, Expired
+        public string? Status { get; set; } //Online, Offline, PendingPayment, Expired
     }
 }

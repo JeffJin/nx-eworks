@@ -8,8 +8,8 @@ namespace adworks.data_services.DbModels
     {
         public double Duration { get; set; }
         [Column(TypeName = "varchar(512)")]
-        public string CloudUrl { get; set; }
+        public string? CloudUrl { get; set; }
         [Column(TypeName = "varchar(512)")]
-        public string EncodedFilePath { get; set; }
+        public string? EncodedFilePath { get; set; }
     }
 }

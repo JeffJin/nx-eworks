@@ -5,7 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using adworks.data_services;
 
-namespace adworks.dataservices.Migrations
+#nullable disable
+
+namespace Eworks.AdworksDataServices.Migrations
 {
     [DbContext(typeof(CommonDbContext))]
     partial class CommonDbContextModelSnapshot : ModelSnapshot
@@ -14,53 +16,54 @@ namespace adworks.dataservices.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.5");
+                .HasAnnotation("ProductVersion", "6.0.8")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("adworks.data_services.DbModels.Appointment", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTimeOffset>("EndTime")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<byte[]>("LocationId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("LocationId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Organizer")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTimeOffset>("StartTime")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -75,47 +78,48 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.Audio", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
-                    b.Property<byte[]>("CategoryId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CloudUrl")
                         .IsRequired()
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<double>("Duration")
                         .HasColumnType("double");
 
                     b.Property<string>("EncodedFilePath")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("RawFilePath")
                         .IsRequired()
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("Tags")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("Title")
                         .HasColumnType("varchar(512)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -139,9 +143,9 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.Category", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -157,43 +161,45 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.Device", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTimeOffset?>("ActivatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("AppVersion")
                         .HasColumnType("int");
 
                     b.Property<string>("AssetTag")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<byte[]>("DeviceGroupId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("DeviceGroupId")
+                        .HasColumnType("char(36)");
 
                     b.Property<int>("DeviceVersion")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("LocationId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("LocationId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("SerialNumber")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -213,28 +219,29 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.DeviceGroup", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
-                    b.Property<byte[]>("OrganizationId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -252,27 +259,28 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.DeviceStatus", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<byte[]>("DeviceId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("DeviceId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Status")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -287,43 +295,44 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.Image", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
-                    b.Property<byte[]>("CategoryId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CloudUrl")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
-                    b.Property<byte[]>("ProductId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("ProductId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("RawFilePath")
                         .IsRequired()
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("Tags")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("Title")
                         .HasColumnType("varchar(512)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -346,30 +355,31 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.License", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<byte[]>("DeviceId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("DeviceId")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTimeOffset>("ExpireOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Type")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -384,31 +394,32 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.Location", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Locale")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<double>("TimezoneOffset")
                         .HasColumnType("double");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -421,33 +432,32 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.MergeRecord", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
-                    b.Property<byte[]>("AssetId1")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("AssetId1")
+                        .HasColumnType("char(36)");
 
-                    b.Property<byte[]>("AssetId2")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("AssetId2")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("MergeType")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -460,27 +470,28 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.Order", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("CustomerId")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<double>("Discount")
                         .HasColumnType("double");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -495,31 +506,31 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.OrderItem", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<byte[]>("OrderId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("char(36)");
 
                     b.Property<int>("OrderQuantity")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("ProductId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("ProductId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -536,25 +547,26 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.Organization", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -565,32 +577,33 @@ namespace adworks.dataservices.Migrations
 
                     b.HasIndex("UpdatedById");
 
-                    b.ToTable("Organizations");
+                    b.ToTable("Organizations", (string)null);
                 });
 
             modelBuilder.Entity("adworks.data_services.DbModels.Payment", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<byte[]>("OrderId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("TransactionId")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -608,37 +621,38 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.Playlist", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTimeOffset>("EndDate")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("EndTime")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("StartDate")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("StartTime")
                         .HasColumnType("int");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -654,29 +668,28 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.PlaylistGroup", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<byte[]>("DeviceGroupId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("DeviceGroupId")
+                        .HasColumnType("char(36)");
 
-                    b.Property<byte[]>("PlaylistId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("PlaylistId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -693,19 +706,20 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.PlaylistItem", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("AssetDiscriminator")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Duration")
                         .HasColumnType("int");
@@ -713,19 +727,17 @@ namespace adworks.dataservices.Migrations
                     b.Property<int>("Index")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("MediaAssetId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("MediaAssetId")
+                        .HasColumnType("char(36)");
 
-                    b.Property<byte[]>("SubPlaylistId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("SubPlaylistId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -740,21 +752,22 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.Product", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Brand")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("Inventory")
                         .HasColumnType("int");
@@ -762,17 +775,17 @@ namespace adworks.dataservices.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("double");
 
-                    b.Property<byte[]>("ProductCategoryId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("ProductCategoryId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -790,38 +803,38 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.Record", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("DeviceSerialNumber")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTimeOffset>("EndedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("IpAddress")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
-                    b.Property<byte[]>("MediaAssetId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("MediaAssetId")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTimeOffset>("StartedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -834,13 +847,12 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.SubCategory", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
-                    b.Property<byte[]>("CategoryId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -855,22 +867,22 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.SubPlaylist", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Height")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("PlaylistId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("PlaylistId")
+                        .HasColumnType("char(36)");
 
                     b.Property<int>("PositionX")
                         .HasColumnType("int");
@@ -879,10 +891,10 @@ namespace adworks.dataservices.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Width")
                         .HasColumnType("int");
@@ -900,55 +912,56 @@ namespace adworks.dataservices.Migrations
 
             modelBuilder.Entity("adworks.data_services.DbModels.Video", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
-                    b.Property<byte[]>("CategoryId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<double>("Duration")
                         .HasColumnType("double");
 
                     b.Property<string>("EncodedVideoPath")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
-                    b.Property<byte[]>("ProductId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("ProductId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("ProgressiveVideoUrl")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("RawFilePath")
                         .IsRequired()
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("Tags")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("ThumbnailLink")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("Title")
                         .HasColumnType("varchar(512)");
 
                     b.Property<string>("UpdatedById")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTimeOffset?>("UpdatedOn")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("VodVideoUrl")
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("varchar(512)");
 
                     b.HasKey("Id");
 
@@ -975,11 +988,11 @@ namespace adworks.dataservices.Migrations
             modelBuilder.Entity("adworks.data_services.Identity.Role", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
@@ -995,7 +1008,7 @@ namespace adworks.dataservices.Migrations
                         .IsUnique()
                         .HasDatabaseName("RoleNameIndex");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("adworks.data_services.Identity.RoleClaim", b =>
@@ -1005,26 +1018,26 @@ namespace adworks.dataservices.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RoleClaims");
+                    b.ToTable("RoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("adworks.data_services.Identity.User", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -1046,7 +1059,7 @@ namespace adworks.dataservices.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -1056,8 +1069,8 @@ namespace adworks.dataservices.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
 
-                    b.Property<byte[]>("OrganizationId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("PasswordHash")
                         .HasMaxLength(500)
@@ -1071,10 +1084,10 @@ namespace adworks.dataservices.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ProfileLogo")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("tinyint(1)");
@@ -1097,7 +1110,7 @@ namespace adworks.dataservices.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("adworks.data_services.Identity.UserClaim", b =>
@@ -1116,76 +1129,78 @@ namespace adworks.dataservices.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserClaims");
+                    b.ToTable("UserClaims", (string)null);
                 });
 
             modelBuilder.Entity("adworks.data_services.Identity.UserLogin", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserLogins");
+                    b.ToTable("UserLogins", (string)null);
                 });
 
             modelBuilder.Entity("adworks.data_services.Identity.UserRole", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("UserRoles");
+                    b.ToTable("UserRoles", (string)null);
                 });
 
             modelBuilder.Entity("adworks.data_services.Identity.UserToken", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("UserTokens");
+                    b.ToTable("UserTokens", (string)null);
                 });
 
             modelBuilder.Entity("adworks.data_services.DbModels.Appointment", b =>
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.Location", "Location")
                         .WithMany("Appointments")
@@ -1206,11 +1221,15 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.DbModels.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1227,17 +1246,19 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.DeviceGroup", "DeviceGroup")
                         .WithMany("Devices")
                         .HasForeignKey("DeviceGroupId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("adworks.data_services.DbModels.Location", "Location")
                         .WithMany("Devices")
                         .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1256,13 +1277,15 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.Organization", "Organization")
                         .WithMany("DeviceGroups")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_group_org_id")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .HasConstraintName("fk_group_org_id");
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1279,11 +1302,15 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.Device", "Device")
                         .WithMany()
-                        .HasForeignKey("DeviceId");
+                        .HasForeignKey("DeviceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1300,11 +1327,15 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.DbModels.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.Product", null)
                         .WithMany("Images")
@@ -1325,12 +1356,14 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.Device", "Device")
                         .WithMany("Licenses")
                         .HasForeignKey("DeviceId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1347,7 +1380,9 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1362,7 +1397,9 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1377,7 +1414,9 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.Identity.User", "Customer")
                         .WithMany()
@@ -1398,14 +1437,16 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.Order", "Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
-                        .HasConstraintName("fk_order_id")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_order_id");
 
                     b.HasOne("adworks.data_services.DbModels.Product", "Product")
                         .WithMany()
@@ -1428,7 +1469,9 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1443,7 +1486,9 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.Order", "Order")
                         .WithMany()
@@ -1464,7 +1509,9 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1479,7 +1526,9 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.DeviceGroup", "DeviceGroup")
                         .WithMany("PlaylistGroups")
@@ -1510,14 +1559,16 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.SubPlaylist", "SubPlaylist")
                         .WithMany("PlaylistItems")
                         .HasForeignKey("SubPlaylistId")
-                        .HasConstraintName("fk_sub_playlist_id")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_sub_playlist_id");
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1534,7 +1585,9 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.SubCategory", "ProductCategory")
                         .WithMany()
@@ -1555,7 +1608,9 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1571,9 +1626,9 @@ namespace adworks.dataservices.Migrations
                     b.HasOne("adworks.data_services.DbModels.Category", "Category")
                         .WithMany("SubCategories")
                         .HasForeignKey("CategoryId")
-                        .HasConstraintName("fk_category_id")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_category_id");
 
                     b.Navigation("Category");
                 });
@@ -1582,14 +1637,16 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.Playlist", "Playlist")
                         .WithMany("SubPlaylists")
                         .HasForeignKey("PlaylistId")
-                        .HasConstraintName("fk_playlist_id")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_playlist_id");
 
                     b.HasOne("adworks.data_services.Identity.User", "UpdatedBy")
                         .WithMany()
@@ -1606,11 +1663,15 @@ namespace adworks.dataservices.Migrations
                 {
                     b.HasOne("adworks.data_services.DbModels.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.Identity.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("adworks.data_services.DbModels.Product", null)
                         .WithMany("Videos")
@@ -1641,8 +1702,8 @@ namespace adworks.dataservices.Migrations
                     b.HasOne("adworks.data_services.DbModels.Organization", "Organization")
                         .WithMany("Users")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_user_org_id")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .HasConstraintName("fk_user_org_id");
 
                     b.Navigation("Organization");
                 });

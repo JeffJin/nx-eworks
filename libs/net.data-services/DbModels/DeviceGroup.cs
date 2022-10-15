@@ -10,12 +10,12 @@ namespace adworks.data_services.DbModels
     {
         [Required]
         public string Name { get; set; }
-        
+
         [JsonIgnore]
-        public Organization Organization { get; set; }
-        
-        public ICollection<Device> Devices { get; } = new List<Device>();
-        public ICollection<PlaylistGroup> PlaylistGroups { get; } = new List<PlaylistGroup>();
+        public Organization? Organization { get; set; }
+
+        public ICollection<Device>? Devices { get; } = new List<Device>();
+        public ICollection<PlaylistGroup>? PlaylistGroups { get; } = new List<PlaylistGroup>();
 
     }
 }

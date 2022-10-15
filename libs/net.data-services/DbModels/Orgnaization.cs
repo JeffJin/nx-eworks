@@ -8,8 +8,8 @@ namespace adworks.data_services.DbModels
     {
         [Required]
         public string Name { get; set; }
-        
-        public ICollection<DeviceGroup> DeviceGroups { get; } = new List<DeviceGroup>();
-        public ICollection<User> Users { get; } = new List<User>();
+
+        public ICollection<DeviceGroup>? DeviceGroups { get; } = new List<DeviceGroup>();
+        public ICollection<User>? Users { get; } = new List<User>();
     }
 }

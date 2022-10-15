@@ -9,9 +9,6 @@ using adworks.media_common;
 using adworks.networking;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using ILogger = Serilog.ILogger;
-
-
 
 namespace database.setup
 {
@@ -19,20 +16,24 @@ namespace database.setup
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Initializing database", args);
 
-            var sqlFile = (args .Length > 0 && args[0] == "test") ? "dbtest-seed-data-test.sql" : "dbtest-seed-data.sql";
+            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            if (environment == "Development")
+            {
+              environment = "dev";
+            }
+            Console.WriteLine($"Initializing database CommonApp for environment {environment}...");
+
+            var sqlFile = $"dbtest-seed-data-{environment}.sql";
             var workingDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             var sqlPath = Path.Combine(workingDirectory ?? throw new InvalidOperationException(), sqlFile);
 
-            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Path.Combine(AppContext.BaseDirectory))
                 .AddJsonFile("appsettings.json", optional: true);
             if (environment == "Development")
             {
-
-                builder
+              builder
                     .AddJsonFile(
                         Path.Combine(AppContext.BaseDirectory, string.Format("..{0}..{0}..{0}", Path.DirectorySeparatorChar), $"appsettings.{environment}.json"),
                         optional: true
@@ -48,8 +49,8 @@ namespace database.setup
             var logger = new LoggerConfiguration().CreateLogger();
             var sampleImageFolder = Path.Combine(workingDirectory, configuration["Image:SampleFolder"]);
             var sampleVideoFolder = Path.Combine(workingDirectory, configuration["Video:SampleFolder"]);
-            var _ftpProcessorAddress = configuration["Ftp:ProcessorAddress"];
             var _ftpStreamingAddress = configuration["Ftp:StreamingAddress"];
+            var connStr = configuration.GetConnectionString("DefaultConnection");
 
             if (args.Length >= 2)
             {
@@ -64,7 +65,7 @@ namespace database.setup
             {
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
-                context.Database.ExecuteSqlRaw(seedData);
+                //context.Database.ExecuteSqlRaw(seedData);
                 Console.WriteLine("Database initialized successfully");
             }
 

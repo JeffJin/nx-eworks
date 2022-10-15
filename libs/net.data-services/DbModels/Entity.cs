@@ -11,17 +11,17 @@ namespace adworks.data_services.DbModels
             Id = Guid.NewGuid();
             CreatedOn = DateTimeOffset.UtcNow;
         }
-        
+
         [Key]
         public Guid Id { get; set; }
-        
+
         [Required]
         public DateTimeOffset CreatedOn { get; set; }
-        
+
         public DateTimeOffset? UpdatedOn { get; set; }
-        
-        public User UpdatedBy { get; set; }
-        
+
+        public User? UpdatedBy { get; set; }
+
         [Required]
         public User CreatedBy { get; set; }
     }

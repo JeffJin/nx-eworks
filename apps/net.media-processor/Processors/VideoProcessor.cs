@@ -32,7 +32,6 @@ namespace adworks.media_processor
         private string _baseAssetFolder;
         private string _videoFolder;
         private string _ftpStramingAddress;
-        private string _ftpProcessorAddress;
         private IConfiguration _configuration;
         private ISubscription _subscription;
         private string _instanceId;
@@ -54,7 +53,6 @@ namespace adworks.media_processor
             _convertedVideoFolder = Path.Combine(_baseAssetFolder, _configuration["Video:ConvertedFolder"]);
             _videoFolder = this._configuration["Ftp:VideoFolder"];
             _ftpStramingAddress = this._configuration["Ftp:StreamingAddress"];
-            _ftpProcessorAddress = this._configuration["Ftp:ProcessorAddress"];
             var instance = configuration.GetSection("Instance").Get<Instance>();
             _instanceId = instance.Id;
         }

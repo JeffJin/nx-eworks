@@ -9,7 +9,7 @@ namespace adworks.data_services.DbModels
         [JsonIgnore]
         [Required]
         public Order Order { get; set; }
-        public Product Product { get; set; }
+        public Product? Product { get; set; }
         public int OrderQuantity { get; set; }
     }
 }

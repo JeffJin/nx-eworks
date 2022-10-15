@@ -27,7 +27,6 @@ namespace adworks.media_processor.Processors
         private string _audioFolder;
         private IConfiguration _configuration;
         private string _ftpStramingAddress;
-        private string _ftpProcessorAddress;
         private string _instanceId;
 
         public AudioProcessor(IFFMpegService ffMpegService, IAudioService audioService,
@@ -44,7 +43,6 @@ namespace adworks.media_processor.Processors
 
             _audioFolder = this._configuration["Ftp:AudioFolder"];
             _ftpStramingAddress = this._configuration["Ftp:StreamingAddress"];
-            _ftpProcessorAddress = this._configuration["Ftp:ProcessorAddress"];
             var instance = configuration.GetSection("Instance").Get<Instance>();
             _instanceId = instance.Id;
         }

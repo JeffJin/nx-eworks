@@ -10,6 +10,10 @@ namespace adworks.media_common
         {
             string config;
             var tempEnv = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            if (tempEnv == "Development")
+            {
+              tempEnv = "dev";
+            }
             if (string.IsNullOrEmpty(env))
             {
                 env = tempEnv;

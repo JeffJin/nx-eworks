@@ -1,5 +1,5 @@
-cd adworks.data-services
+cd libs/net.data-services
 
-dotnet-ef --startup-project ../adworks.database-setup migrations add InitialCreation
+dotnet-ef --startup-project ../../apps/net.database-setup migrations add initial-creation
 
-dotnet-ef --startup-project ../adworks.database-setup  database update
+dotnet-ef --startup-project ../../apps/net.database-setup database update

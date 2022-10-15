@@ -26,7 +26,6 @@ namespace adworks.media_web_api.Controllers
         private readonly IMessageClient _messageClient;
         private readonly IFtpService _ftpService;
         private readonly string _videoFolder;
-        private readonly string _ftpProcessorAddress;
         private readonly string _ftpStreamingAddress;
 
         // Get the default form options so that we can use them to set the default limits for
@@ -37,7 +36,6 @@ namespace adworks.media_web_api.Controllers
             IFtpService ftpService, ILogger logger): base(configuration, userService, logger)
         {
             _videoFolder = _configuration["Ftp:VideoFolder"];
-            _ftpProcessorAddress = _configuration["Ftp:ProcessorAddress"];
             _ftpStreamingAddress = _configuration["Ftp:StreamingAddress"];
             _videoService = videoService;
             _fileService = fileService;

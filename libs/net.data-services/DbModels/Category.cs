@@ -9,12 +9,12 @@ namespace adworks.data_services.DbModels
     {
         [Key]
         public Guid Id { get; set; }
-        
+
         [Column(TypeName = "varchar(256)")]
         [Required]
         [MinLength(3)]
-        public string Name { get; set; }  
-        
-        public ICollection<SubCategory> SubCategories { get; } = new List<SubCategory>();
+        public string Name { get; set; }
+
+        public ICollection<SubCategory>? SubCategories { get; } = new List<SubCategory>();
     }
 }

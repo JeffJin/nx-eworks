@@ -15,7 +15,7 @@
 
   <Target Name="CheckNxModuleBoundaries" BeforeTargets="Build">
 
-    <Exec Command="node ../../node_modules/@nx-dotnet/core/src/tasks/check-module-boundaries.js -p net.database-setup"/>
+    <Exec Command="node ../../node_modules/@nx-dotnet/core/src/tasks/check-module-boundaries.js -p net.database-setup" />
 
   </Target>
   <ItemGroup>
@@ -40,9 +40,12 @@
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="dbtest-seed-data-dev.sql">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
     <ItemGroup>
-      <None Update="dbtest-seed-data.sql">
+      <None Update="dbtest-seed-data-prod.sql">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="dbtest-seed-data-test.sql">

@@ -10,18 +10,18 @@ namespace adworks.data_services.DbModels
     {
         [Required]
         public string Name { get; set; }
-        
+
         [Required, Phone]
         public string Phone { get; set; }
-        
+
         [Required, EmailAddress]
         public string Email { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
         public DateTimeOffset StartTime { get; set; }
         public DateTimeOffset EndTime { get; set; }
-        
-        public string Organizer { get; set; }
+
+        public string? Organizer { get; set; }
         [JsonIgnore]
-        public Location Location { get; set; }
+        public Location? Location { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace adworks.data_services.DbModels
     public class Image: MediaAsset
     {
         [Column(TypeName = "varchar(512)")]
-        public string CloudUrl { get; set; }
+        public string? CloudUrl { get; set; }
     }
 }

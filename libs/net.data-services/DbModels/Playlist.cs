@@ -8,7 +8,7 @@ namespace adworks.data_services.DbModels
     {
         public Playlist()
         {
-            
+
         }
         [Required]
         public string Name { get; set; }
@@ -18,8 +18,8 @@ namespace adworks.data_services.DbModels
         public int StartTime { get; set; }
         //daily end time in minutes, offset from midnight
         public int EndTime { get; set; }
-        
-        public ICollection<SubPlaylist> SubPlaylists { get; } = new List<SubPlaylist>();
-        public ICollection<PlaylistGroup> PlaylistGroups { get; } = new List<PlaylistGroup>();
+
+        public ICollection<SubPlaylist>? SubPlaylists { get; } = new List<SubPlaylist>();
+        public ICollection<PlaylistGroup>? PlaylistGroups { get; } = new List<PlaylistGroup>();
     }
 }

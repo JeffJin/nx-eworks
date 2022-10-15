@@ -46,7 +46,6 @@ namespace adworks.media_web_api.Controllers
         private readonly string _uploadAudioFolder;
         private readonly string _uploadImageFolder;
         private readonly string _ftpHomeFolder;
-        private string _ftpProcessorAddress;
         private string _ftpStreamingAddress;
 
         public FileApiController(IHubContext<EventHub> hubContext, IFileService fileService,
@@ -58,7 +57,6 @@ namespace adworks.media_web_api.Controllers
             this._uploadAudioFolder = Path.Combine(this._configuration["BaseAssetFolder"], this._configuration["Audio:UploadFolder"]);
             this._uploadImageFolder = Path.Combine(this._configuration["BaseAssetFolder"], this._configuration["Image:UploadFolder"]);
             this._ftpHomeFolder = this._configuration["Ftp:HomeFolder"];
-            _ftpProcessorAddress = _configuration["Ftp:ProcessorAddress"];
             _ftpStreamingAddress = _configuration["Ftp:StreamingAddress"];
 
             _hubContext = hubContext;
@@ -142,7 +140,7 @@ namespace adworks.media_web_api.Controllers
                     //upload to FTP server on processor server
                     var destFolder = Path.Combine(_ftpHomeFolder, "uploaded", fileData.Id.ToString());
 
-                    var resultPath = await _ftpService.UploadAsync(fileData.RawFilePath, destFolder, _ftpProcessorAddress, messageIdentity);
+                    var resultPath = await _ftpService.UploadAsync(fileData.RawFilePath, destFolder, _ftpStreamingAddress, messageIdentity);
                     dto.Id = fileData.Id;
                     dto.Title = StringHelper.GetTitleFromFileName(fileName);
                     dto.CloudUrl = resultPath;
@@ -168,7 +166,7 @@ namespace adworks.media_web_api.Controllers
         {
             try
             {
-                if (!_ftpService.FileExists(dto.CloudUrl, _ftpProcessorAddress))
+                if (!_ftpService.FileExists(dto.CloudUrl, _ftpStreamingAddress))
                 {
                     //TODO mark this item as to be reviewed
                     return NotFound(null);

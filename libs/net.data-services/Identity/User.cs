@@ -12,9 +12,9 @@ namespace adworks.data_services.Identity
         {
             Id = Guid.NewGuid().ToString();
         }
-        
-        public string ProfileLogo { get; set; }
+
+        public string? ProfileLogo { get; set; }
         [JsonIgnore]
-        public Organization Organization { get; set; }
+        public Organization? Organization { get; set; }
     }
 }

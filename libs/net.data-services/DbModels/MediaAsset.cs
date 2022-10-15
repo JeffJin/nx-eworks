@@ -8,18 +8,18 @@ namespace adworks.data_services.DbModels
     public abstract class MediaAsset: Entity
     {
         [Column(TypeName = "varchar(512)")]
-        public string Title { get; set; }
-        
+        public string? Title { get; set; }
+
         [Column(TypeName = "varchar(512)")]
-        public string Description { get; set; }
-        
+        public string? Description { get; set; }
+
         [Column(TypeName = "varchar(512)")]
         [Required]
-        public string RawFilePath { get; set; }
-        
+        public string? RawFilePath { get; set; }
+
         [Column(TypeName = "varchar(512)")]
-        public string Tags { get; set; }
-        
+        public string? Tags { get; set; }
+
         [Required]
         public Category Category { get; set; }
     }

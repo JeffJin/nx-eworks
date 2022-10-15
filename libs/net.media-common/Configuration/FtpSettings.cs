@@ -2,7 +2,6 @@
 {
     public class FtpSettings
     {
-        public string ProcessorAddress { get; set; }
         public string StreamingAddress { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }

@@ -15,7 +15,7 @@ namespace adworks.data_services
     public class CommonDbContext: IdentityDbContext<User, Role,
         string, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
     {
-        private readonly ILogger _logger;
+        private readonly ILogger? _logger;
 
         public CommonDbContext()
         {
@@ -69,6 +69,7 @@ namespace adworks.data_services
         {
             var configuration = AppConfig.GetConfig();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
+
             _logger?.Information(
                 $"CommonDbContext uses the following connection string to connect to mysql server :: {connectionString}");
             optionsBuilder.UseMySql(
@@ -167,12 +168,12 @@ namespace adworks.data_services
             modelBuilder.Entity<Device>()
                 .HasOne(d => d.Location)
                 .WithMany(l => l.Devices)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Device>()
                 .HasOne(d => d.DeviceGroup)
                 .WithMany(l => l.Devices)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.NoAction);
 
             //device
             modelBuilder.Entity<Device>()
@@ -183,7 +184,7 @@ namespace adworks.data_services
             modelBuilder.Entity<License>()
                 .HasOne(l => l.Device)
                 .WithMany(d => d.Licenses)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.NoAction);
 
             //device group
             modelBuilder.Entity<DeviceGroup>()
@@ -213,14 +214,14 @@ namespace adworks.data_services
             modelBuilder.Entity<User>()
                 .HasOne(pi => pi.Organization)
                 .WithMany(p => p.Users)
-                .OnDelete(DeleteBehavior.SetNull)
+                .OnDelete(DeleteBehavior.NoAction)
                 .HasConstraintName("fk_user_org_id");
 
             //playlist item
             modelBuilder.Entity<DeviceGroup>()
                 .HasOne(pi => pi.Organization)
                 .WithMany(p => p.DeviceGroups)
-                .OnDelete(DeleteBehavior.SetNull)
+                .OnDelete(DeleteBehavior.NoAction)
                 .HasConstraintName("fk_group_org_id");
 
             //playlist and group many to many relationship

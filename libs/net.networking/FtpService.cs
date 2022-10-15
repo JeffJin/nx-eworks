@@ -24,7 +24,6 @@ namespace adworks.networking
         private readonly IMessageClient _messageClient;
         private readonly ILogger _logger;
         private IConfiguration _configuration;
-        private string _ftpProcessorAddress;
         private string _ftpStramingAddress;
         private string _ftpUserName;
         private string _ftpPassword;

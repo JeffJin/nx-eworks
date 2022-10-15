@@ -26,7 +26,6 @@ namespace adworks.media_web_api.Controllers
         private readonly IFileService _fileService;
         private readonly IFtpService _ftpService;
         private readonly string _audioFolder;
-        private string _ftpProcessorAddress;
         private string _ftpStreamingAddress;
 
         // Get the default form options so that we can use them to set the default limits for
@@ -40,7 +39,6 @@ namespace adworks.media_web_api.Controllers
             _audioService = audioService;
             _fileService = fileService;
             _ftpService = ftpService;
-            _ftpProcessorAddress = _configuration["Ftp:ProcessorAddress"];
             _ftpStreamingAddress = _configuration["Ftp:StreamingAddress"];
         }
 
