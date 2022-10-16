@@ -13,13 +13,13 @@
 
   <ItemGroup>
 
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
 
   </ItemGroup>
 
   <Target Name="CheckNxModuleBoundaries" BeforeTargets="Build">
 
-    <Exec Command="node ../../node_modules/@nx-dotnet/core/src/tasks/check-module-boundaries.js -p net.web-api"/>
+    <Exec Command="node ../../node_modules/@nx-dotnet/core/src/tasks/check-module-boundaries.js -p net.web-api" />
 
   </Target>
    <ItemGroup>
@@ -73,9 +73,8 @@
     <ItemGroup>
       <PackageReference Include="Autofac" Version="6.4.0" />
       <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
-      <PackageReference Include="Facebook" Version="7.0.6" />
       <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="6.0.8" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="6.0.10" />
       <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.8" />
       <PackageReference Include="Microsoft.AspNetCore.Owin" Version="6.0.8" />
@@ -99,6 +98,7 @@
       <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\..\libs\Facebook.Core\Facebook.Core.csproj" />
       <ProjectReference Include="..\..\libs\net.data-services\Eworks.AdworksDataServices.csproj" />
       <ProjectReference Include="..\..\libs\net.message-bus\Eworks.AdworksMessageBus.csproj" />
       <ProjectReference Include="..\..\libs\net.networking\Eworks.AdworksNetworking.csproj" />

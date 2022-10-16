@@ -1,7 +1,4 @@
-﻿using System;
-using System.Security;
-using System.Threading.Tasks;
-using adworks.data_services;
+﻿using adworks.data_services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,8 +10,6 @@ using adworks.message_bus;
 using adworks.networking;
 using Facebook;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
-using Serilog;
 using ILogger = Serilog.ILogger;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
