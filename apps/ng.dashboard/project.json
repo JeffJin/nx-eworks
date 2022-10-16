@@ -65,6 +65,27 @@
           ],
           "outputHashing": "all"
         },
+        "staging": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "3mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "40kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/ng.dashboard/src/environments/environment.ts",
+              "with": "apps/ng.dashboard/src/environments/environment.staging.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
         "development": {
           "buildOptimizer": false,
           "optimization": false,
@@ -81,6 +102,9 @@
       "configurations": {
         "production": {
           "browserTarget": "ng.dashboard:build:production"
+        },
+        "staging": {
+          "browserTarget": "ng.dashboard:build:staging"
         },
         "development": {
           "browserTarget": "ng.dashboard:build:development"

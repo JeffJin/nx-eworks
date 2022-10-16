@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --ssl --port 4200 --configuration development",
-    "build": "ng build --configuration production --aot",
+    "build:prod": "ng build --configuration production --aot",
+    "build:stg": "ng build --configuration staging --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
