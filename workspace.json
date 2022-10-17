@@ -24,6 +24,7 @@
     "rx.ad-player-e2e": "apps/rx.ad-player-e2e",
     "rx.shop": "apps/rx.shop",
     "rx.shop-e2e": "apps/rx.shop-e2e",
-    "ui": "libs/ui"
+    "ui": "libs/ui",
+    "net.facebook": "libs/net.facebook"
   }
 }
