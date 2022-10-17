@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.pi-player", "apps\net.p
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net.database-setup", "apps\net.database-setup\Eworks.AdworksDatabaseSetup.csproj", "{7559FEF6-4709-4F1E-8C95-8D21F76539D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Core", "libs\Facebook.Core\Facebook.Core.csproj", "{BB4EB509-C6F0-4FEE-A162-7FC3C2D3BAFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "net.facebook", "libs\net.facebook\Eworks.NetFacebook.csproj", "{BB4EB509-C6F0-4FEE-A162-7FC3C2D3BAFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
