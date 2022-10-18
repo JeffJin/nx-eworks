@@ -37,7 +37,7 @@ pipeline {
     }
     stage('Build Web Api Image') {
       steps {
-        sh "docker build . -f adworks.media-web-api/Dockerfile -t $registry:$BUILD_NUMBER"
+        sh "docker build . -f apps/net.web-api/Dockerfile -t $registry:$BUILD_NUMBER"
         sh "docker tag $registry:$BUILD_NUMBER $registry:latest"
       }
     }

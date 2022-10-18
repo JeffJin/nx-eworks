@@ -36,7 +36,7 @@ pipeline {
     }
     stage('Build Angular App Image') {
       steps {
-        sh "docker build -t $registry:$BUILD_NUMBER ."
+        sh "docker build -f apps/ng.dashboard/Dockerfile -t $registry:$BUILD_NUMBER ."
         sh "docker tag $registry:$BUILD_NUMBER $registry:latest"
       }
     }
