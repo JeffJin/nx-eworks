@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git credentialsId: 'github-ssh-jeffjin', url: 'git@github.com:eworkspace/reefbook.git', branch: 'develop'
+        git credentialsId: 'github-ssh-jeffjin', url: 'git@github.com:JeffJin/nx-eworks.git', branch: 'develop'
       }
     }
     stage('Stop current running image and remove') {
