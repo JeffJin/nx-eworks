@@ -1,6 +1,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0.400 AS build-env
 WORKDIR /app
 
+RUN apt-get update -yq \
+    && apt-get install curl gnupg -yq \
+    && curl -sL https://deb.nodesource.com/setup_10.x | bash \
+    && apt-get install nodejs -yq
+
 # Copy everything else and build
 COPY . ./
 RUN dotnet publish -r linux-x64 --self-contained true -c Release -o apps/net.web-api/out apps/net.web-api/Eworks.AdworksWebApi.csproj

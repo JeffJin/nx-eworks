@@ -98,7 +98,6 @@
       <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\..\libs\Facebook.Core\Facebook.Core.csproj" />
       <ProjectReference Include="..\..\libs\net.data-services\Eworks.AdworksDataServices.csproj" />
       <ProjectReference Include="..\..\libs\net.facebook\Eworks.NetFacebook.csproj" />
       <ProjectReference Include="..\..\libs\net.message-bus\Eworks.AdworksMessageBus.csproj" />
