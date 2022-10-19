@@ -3,7 +3,7 @@ WORKDIR /app
 
 # Copy everything else and build
 COPY . ./
-RUN dotnet publish -r linux-x64 --self-contained true -c Release -o net.web-api/out net.web-api/adworks.media-web-api.csproj
+RUN dotnet publish -r linux-x64 --self-contained true -c Release -o net.web-api/out net.web-api/Eworks.AdworksWebApi.csproj
 
 RUN mkdir p ~/adworks
 
