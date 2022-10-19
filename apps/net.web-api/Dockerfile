@@ -3,7 +3,7 @@ WORKDIR /app
 
 # Copy everything else and build
 COPY . ./
-RUN dotnet publish -r linux-x64 --self-contained true -c Release -o apps/net.web-api/out apps/net.web-api/adworks.media-web-api.csproj
+RUN dotnet publish -r linux-x64 --self-contained true -c Release -o net.web-api/out net.web-api/adworks.media-web-api.csproj
 
 RUN mkdir p ~/adworks
 
@@ -11,7 +11,7 @@ RUN mkdir p ~/adworks
 FROM mcr.microsoft.com/dotnet/runtime:6.0.8
 WORKDIR /app
 
-COPY --from=build-env /app/apps/net.web-api/out .
+COPY --from=build-env /app/net.web-api/out .
 ENV ASPNETCORE_URLS http://+:5000;
 EXPOSE 5000
 ENTRYPOINT ["dotnet", "adworks.media-web-api.dll", "--ASPNETCORE_ENVIRONMENT=prod"]
