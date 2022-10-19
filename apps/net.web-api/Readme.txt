@@ -1,10 +1,12 @@
 Architecture
+adworks-frontend        -> reefbook.ca      192.168.5.117
 
-adworks-web          -> jeffjin.com    138.197.164.229
+adworks-web-api         -> eworkspace.ca    192.168.5.116
 
-adworks-db-processor -> eworkspace.ca  138.197.164.229         
+adworks-media-processor -> eworkspace.ca  192.168.5.108, 192.168.5.109
 
-adworks-streaming    -> jeffjin.net    138.197.164.229
+adworks-streaming(Nginx, Rtmp, Ftp, MySql, RabbitMQ) -> eworkspace.co  192.168.5.115
+
 
 ==============================================================================================
 
@@ -26,9 +28,9 @@ This web server is used to handle media streaming and lua script for content pro
 
 nginx + rtmp module config
 
-rtmp://jeffjin.com:1935/vod//jeff@jeffjin.com/4a851902-efee-421b-a915-ee50fda8f3aa/video2.mp4
-rtmp://jeffjin.com:1935/vod//jeff@jeffjin.com/d0b93049-69f0-4643-be44-bef704deaf08/video4.mp4
-rtmp://jeffjin.com:1935/vod//jeff@eworks.io/d0b93049-69f0-4643-be44-bef704deaf08/video4.mp4
+rtmp://eworkspace.ca:1935/vod//jeff@jeffjin.com/4a851902-efee-421b-a915-ee50fda8f3aa/video2.mp4
+rtmp://eworkspace.ca:1935/vod//jeff@jeffjin.com/d0b93049-69f0-4643-be44-bef704deaf08/video4.mp4
+rtmp://eworkspace.ca:1935/vod//jeff@eworks.io/d0b93049-69f0-4643-be44-bef704deaf08/video4.mp4
 
 ==============================================================================================
 
@@ -60,7 +62,7 @@ rtmp {
         application vod {
             play /var/videos/mp4s;
         }
-        
+
         application hls {
             live on;
             hls on;
@@ -81,14 +83,14 @@ http {
             rtmp_stat all;
             rtmp_stat_stylesheet stat.xsl;
         }
- 
+
         location /stat.xsl {
             # XML stylesheet to view RTMP stats.
             # Copy stat.xsl wherever you want
             # and put the full directory path here
             root /var/videos/stats/stat.xsl;
         }
- 
+
         location /hls {
             # Serve HLS fragments
             types {
@@ -104,31 +106,31 @@ http {
      server {
             listen 80 default_server;
             listen [::]:80;
-            
+
             index index.html;
-    
+
             server_name _; # This is just an invalid value which will never trigger on a real hostname.
-    
+
             server_name_in_redirect off;
-    
+
             root  /home/jeff/deployments/ngspa/dist;
-            
+
             location / {
                 try_files $uri $uri/ /index.html;
              }
        }
      }
-     
-     
-     
+
+
+
      Install dotnet core on Ubuntu 16.04 LTS
-     
+
      curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
      sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-     
+
      sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
      sudo apt-get update
-     
+
      sudo apt-get install dotnet-sdk-2.1.4
-     
+
      dotnet --version
