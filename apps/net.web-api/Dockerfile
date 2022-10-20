@@ -1,4 +1,5 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0.400 AS build-env
+WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
     software-properties-common \
@@ -6,8 +7,8 @@ RUN apt-get update && apt-get install -y \
 RUN npm install npm@latest -g && \
     npm install n -g && \
     n latest
-
-WORKDIR /app
+RUN echo "NODE Version:" && node --version
+RUN echo "NPM Version:" && npm --version
 
 # Copy everything else and build
 COPY . ./
