@@ -9,9 +9,10 @@ RUN npm install npm@latest -g && \
     n latest
 RUN echo "NODE Version:" && node --version
 RUN echo "NPM Version:" && npm --version
-
 # Copy everything else and build
 COPY . ./
+RUN npm install
+
 RUN dotnet publish -r linux-x64 --self-contained true -c Release -o apps/net.web-api/out apps/net.web-api/Eworks.AdworksWebApi.csproj
 
 RUN mkdir p ~/adworks
