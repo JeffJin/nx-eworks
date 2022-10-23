@@ -32,6 +32,7 @@ namespace adworks.media_processor
 
                 logger.Information("Ctrl-c to quit media processor");
                 Task.WaitAll(tasks);
+                logger.Information("Exiting media processor...");
             }
         }
 
