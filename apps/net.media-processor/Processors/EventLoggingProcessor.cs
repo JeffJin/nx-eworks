@@ -13,28 +13,26 @@ using adworks.media_common.Services;
 using adworks.message_bus;
 using adworks.message_common;
 using adworks.networking;
+using Eworks.AdworksMediaProcessor.Processors;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using ILogger = Serilog.ILogger;
 
 namespace adworks.media_processor
 {
-    public class EventLoggingProcessor : IEventLoggingProcessor
+    public class EventLoggingProcessor : BaseProcessor, IEventLoggingProcessor
     {
         private readonly IMessageClient _messageClient;
         private readonly IDeviceService _deviceService;
         private readonly ITextService _textService;
-        private readonly ILogger _logger;
-        private ISubscription _subscription;
         private string _instanceId;
 
         public EventLoggingProcessor( IConfiguration configuration, ILogger logger, ITextService textService,
-            IMessageClient messageClient, IDeviceService deviceService)
+            IMessageClient messageClient, IDeviceService deviceService): base(configuration, logger, messageClient)
         {
             _messageClient = messageClient;
             _deviceService = deviceService;
             _textService = textService;
-            _logger = logger;
             var instance = configuration.GetSection("Instance").Get<Instance>();
             _instanceId = instance.Id;
         }
@@ -57,18 +55,15 @@ namespace adworks.media_processor
                 dto.ReceivedOn = DateTimeOffset.UtcNow;
                 _textService.LogDeviceStatus(dto);
 
-                //add or update latest status record in the datbase
-                await _deviceService.AddOrUpdateDeviceStatus(dto);
+                //add or update latest status record in the database
+                var task = _deviceService.AddOrUpdateDeviceStatus(dto);
+                _tasks.Add(task);
+                await task;
             }
             catch (Exception e)
             {
                 _logger.Error(e, "Failed to process device heartbeat message");
             }
-        }
-
-        public void Dispose()
-        {
-            _subscription.Unsubscribe();
         }
     }
 }

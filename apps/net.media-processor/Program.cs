@@ -2,39 +2,30 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Autofac;
-using Serilog;
-using ILogger = Serilog.ILogger;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace adworks.media_processor
 {
-    class Program
+  public class Program
+  {
+    public static async Task Main(string[] args)
     {
-
-        static void Main(string[] args)
+      // await Host.CreateDefaultBuilder(args)
+      //   .ConfigureServices(services =>
+      //   {
+      //     services.AddHostedService<MediaProcessorService>();
+      //   })
+      //   .Build()
+      //   .RunAsync();
+      var hostBuilder = new HostBuilder()
+        // Add configuration, logging, ...
+        .ConfigureServices((hostContext, services) =>
         {
-            //configure autofac DI
-            var configResult = ContainerConfig.Configure();
+          services.AddHostedService<MediaProcessorService>();
+        });
 
-            using (var scope = configResult.Container.BeginLifetimeScope())
-            {
-                //start all processors
-                var processors = scope.Resolve<IEnumerable<IProcessor>>();
-
-                var tasks = processors.ToArray().Select(processor => Task.Run(() =>
-                {
-                    processor.Run();
-                    // Keep the processor running.
-                    Thread.Sleep(Timeout.Infinite);
-                })).ToArray();
-
-                var logger = scope.Resolve<ILogger>();
-
-                logger.Information("Ctrl-c to quit media processor");
-                Task.WaitAll(tasks);
-                logger.Information("Exiting media processor...");
-            }
-        }
-
+      await hostBuilder.RunConsoleAsync();
     }
+  }
 }

@@ -6,6 +6,7 @@ using adworks.data_services;
 using adworks.media_common;
 using adworks.message_bus;
 using adworks.message_common;
+using Eworks.AdworksMediaProcessor.Processors;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using ILogger = Serilog.ILogger;
@@ -13,7 +14,7 @@ using ILogger = Serilog.ILogger;
 
 namespace adworks.media_processor
 {
-    public class AdEngineProcessor : IAdEngineProcessor
+    public class AdEngineProcessor : BaseProcessor, IAdEngineProcessor
     {
         private readonly IFFMpegService _mediaService;
         private readonly IVideoService _dataService;
@@ -24,8 +25,11 @@ namespace adworks.media_processor
         private readonly ILogger _logger;
         private ISubscription _subscription;
 
-        public AdEngineProcessor(IFFMpegService mediaService, IVideoService dataService, ISocketService socketService,
-            ILogger logger, IMessageClient messageClient, IAdSearchEngine adDSearchEngine, IConfiguration configuration)
+        private IList<Task> _tasks = new List<Task>();
+
+        public AdEngineProcessor(IFFMpegService mediaService, IVideoService dataService,
+          ISocketService socketService, ILogger logger, IMessageClient messageClient,
+          IAdSearchEngine adDSearchEngine, IConfiguration configuration): base(configuration, logger, messageClient)
         {
             _mediaService = mediaService;
             _dataService = dataService;
@@ -67,7 +71,24 @@ namespace adworks.media_processor
 
         public void Dispose()
         {
-            _subscription.Unsubscribe();
+          Stop();
+        }
+
+        public void Stop()
+        {
+          _subscription.Unsubscribe();
+          //stop all running tasks
+          foreach (var task in _tasks)
+          {
+            try
+            {
+              task.Dispose();
+            }
+            catch (Exception e)
+            {
+              _logger.Error("Unable to dispose the task", e);
+            }
+          }
         }
     }
 

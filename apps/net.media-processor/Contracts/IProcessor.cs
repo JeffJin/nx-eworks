@@ -2,8 +2,9 @@
 
 namespace adworks.media_processor
 {
-    public interface IProcessor: IDisposable
+    public interface IProcessor
     {
         void Run();
+        void Stop();
     }
 }

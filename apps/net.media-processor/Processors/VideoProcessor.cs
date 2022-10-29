@@ -10,6 +10,7 @@ using adworks.media_common.Configuration;
 using adworks.message_bus;
 using adworks.message_common;
 using adworks.networking;
+using Eworks.AdworksMediaProcessor.Processors;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -18,36 +19,29 @@ using ILogger = Serilog.ILogger;
 
 namespace adworks.media_processor
 {
-    public class VideoProcessor : IProcessor
+    public class VideoProcessor : BaseProcessor, IProcessor
     {
         private readonly IFFMpegService _ffMpegService;
         private readonly IVideoService _videoService;
-        private readonly IMessageClient _messageClient;
         private readonly IFileService _fileService;
         private readonly IFtpService _ftpService;
         private readonly IDataContextFactory _dbContextFactory;
-        private readonly ILogger _logger;
 
         private string _convertedVideoFolder;
         private string _baseAssetFolder;
         private string _videoFolder;
         private string _ftpStramingAddress;
-        private IConfiguration _configuration;
-        private ISubscription _subscription;
         private string _instanceId;
 
         public VideoProcessor(IFFMpegService ffMpegService, IVideoService videoService,
             IConfiguration configuration, IMessageClient messageClient, IFileService fileService, IFtpService ftpService,
-            IDataContextFactory dbContextFactory, ILogger logger)
+            IDataContextFactory dbContextFactory, ILogger logger): base(configuration, logger, messageClient)
         {
             _ffMpegService = ffMpegService;
             _videoService = videoService;
-            _messageClient = messageClient;
             _fileService = fileService;
             _ftpService = ftpService;
             _dbContextFactory = dbContextFactory;
-            _logger = logger;
-            _configuration = configuration;
 
             _baseAssetFolder = _configuration["BaseAssetFolder"];
             _convertedVideoFolder = Path.Combine(_baseAssetFolder, _configuration["Video:ConvertedFolder"]);
@@ -354,11 +348,6 @@ namespace adworks.media_processor
                 return model;
             }
 
-        }
-
-        public void Dispose()
-        {
-            _subscription.Unsubscribe();
         }
     }
 }

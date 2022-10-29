@@ -8,39 +8,32 @@ using adworks.media_common.Configuration;
 using adworks.message_bus;
 using adworks.message_common;
 using adworks.networking;
+using Eworks.AdworksMediaProcessor.Processors;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using ILogger = Serilog.ILogger;
 
 namespace adworks.media_processor.Processors
 {
-    public class AudioProcessor: IProcessor
+    public class AudioProcessor: BaseProcessor, IProcessor
     {
        private readonly IFFMpegService _ffMpegService;
         private readonly IAudioService _audioService;
-        private readonly IMessageClient _messageClient;
         private readonly IFileService _fileService;
         private readonly IFtpService _ftpService;
-        private readonly ILogger _logger;
-        private ISubscription _subscription;
 
         private string _audioFolder;
-        private IConfiguration _configuration;
         private string _ftpStramingAddress;
         private string _instanceId;
 
         public AudioProcessor(IFFMpegService ffMpegService, IAudioService audioService,
              IConfiguration configuration, ILogger logger, IMessageClient messageClient,
-            IFileService fileService, IFtpService ftpService)
+            IFileService fileService, IFtpService ftpService): base(configuration, logger, messageClient)
         {
             _ffMpegService = ffMpegService;
             _audioService = audioService;
-            _messageClient = messageClient;
             _fileService = fileService;
             _ftpService = ftpService;
-            _logger = logger;
-            _configuration = configuration;
-
             _audioFolder = this._configuration["Ftp:AudioFolder"];
             _ftpStramingAddress = this._configuration["Ftp:StreamingAddress"];
             var instance = configuration.GetSection("Instance").Get<Instance>();
@@ -64,7 +57,9 @@ namespace adworks.media_processor.Processors
         {
             if (m.Topic == MessageTopics.AudioUploaded)
             {
-                await HandleAudioUploadMessage(m);
+                var task = HandleAudioUploadMessage(m);
+                _tasks.Add(task);
+                await task;
             }
             else
             {
@@ -97,7 +92,7 @@ namespace adworks.media_processor.Processors
             }
             catch (Exception e)
             {
-                _logger.Error("Failed to proces AudioUploaded message", e);
+                _logger.Error("Failed to process AudioUploaded message", e);
                 _messageClient.Publish(new Message(m.MessageIdentity)
                 {
                     Topic = MessageTopics.AudioFailedProcessing,
@@ -215,9 +210,6 @@ namespace adworks.media_processor.Processors
             }
         }
 
-        public void Dispose()
-        {
-            _subscription.Unsubscribe();
-        }
+
     }
 }
