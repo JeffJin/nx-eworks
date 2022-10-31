@@ -12,7 +12,7 @@ RUN npm install npm@latest -g && \
 COPY . ./
 RUN npm install
 
-RUN dotnet publish -r linux-x64 --self-contained true -c Release -o apps/net.web-api/out apps/net.web-api/Eworks.AdworksWebApi.csproj
+RUN dotnet publish -r linux-x64 --self-contained true -c Release -o apps/net.web-api/out apps/net.web-api/Eworks.AdworksWe                                                                       bApi.csproj
 
 RUN mkdir p ~/adworks
 
